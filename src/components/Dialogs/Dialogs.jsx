@@ -2,6 +2,7 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import classes from './Dialogs.module.css';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../redux/state'
 
 const Dialogs = (props) => {
 	let dialogs = props.dialogsPage.dialogs.map(({id, name}) => <DialogItem key={id} name={name} id={id}/>);
@@ -9,17 +10,12 @@ const Dialogs = (props) => {
 
 	let textareaRef = React.createRef();
 	const addMessage = () => {
-		props.dispatch({
-			type: 'ADD-MESSAGE'
-		});
+		props.dispatch( addMessageActionCreator() );
 	}
 
 	const onMassageChange = () => {
 		const text = textareaRef.current.value;
-		props.dispatch({
-			type: 'UPDATE-NEW-MESSAGE-TEXT',
-			newText: text
-		});
+		props.dispatch( updateNewMessageTextActionCreator(text) );
 	}
 
 	return (
