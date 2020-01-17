@@ -1,0 +1,14 @@
+.dialog {
+	padding: 5px;
+}
+
+.dialog a {
+	color: white;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.dialog a:hover {
+	color: yellow;
+}
