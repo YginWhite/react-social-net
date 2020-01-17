@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
 	_state: {
 		profilePage: {
@@ -52,7 +57,7 @@ let store = {
 	dispatch(action) {
 		const { type } = action;
 
-		if (type === 'ADD-POST') {
+		if (type === ADD_POST) {
 			let newPost = {
 				id: '6',
 				like: '0',
@@ -63,11 +68,11 @@ let store = {
 			this._state.profilePage.newPostText = '';
 			this._callSubscriber();
 
-		} else if (type === 'UPDATE-NEW-POST-TEXT') {
+		} else if (type === UPDATE_NEW_POST_TEXT) {
 			this._state.profilePage.newPostText = action.newText;
 			this._callSubscriber();
 
-		} else if (type === 'ADD-MESSAGE') {
+		} else if (type === ADD_MESSAGE) {
 			let newMessage = {
 				id: '4',
 				message: this._state.dialogsPage.newMessageText
@@ -77,7 +82,7 @@ let store = {
 			this._state.dialogsPage.newMessageText = '';
 			this._callSubscriber();
 
-		} else if (type === 'UPDATE-NEW-MESSAGE-TEXT') {
+		} else if (type === UPDATE_NEW_MESSAGE_TEXT) {
 			this._state.dialogsPage.newMessageText = action.newText;
 			this._callSubscriber();
 		}
@@ -121,26 +126,26 @@ export default store;
 
 export const addPostActionCreator = () => {
 	return {
-		type: 'ADD-POST'
+		type: ADD_POST
 	};
 };
 
 export const updateNewPostTextActionCreator = (text) => {
 	return {
-		type: 'UPDATE-NEW-POST-TEXT',
+		type: UPDATE_NEW_POST_TEXT,
 		newText: text
 	}
 };
 
 export const addMessageActionCreator = () => {
 	return {
-		type: 'ADD-MESSAGE'
+		type: ADD_MESSAGE
 	};
 };
 
 export const updateNewMessageTextActionCreator = (text) => {
 	return {
-		type: 'UPDATE-NEW-MESSAGE-TEXT',
+		type: UPDATE_NEW_MESSAGE_TEXT,
 		newText: text
 	};
 };
