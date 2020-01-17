@@ -47,6 +47,40 @@ let store = {
 
 	subscribe(observer) {
 		this._callSubscriber = observer;
+	},
+
+	dispatch(action) {
+		const { type } = action;
+
+		if (type === 'ADD-POST') {
+			let newPost = {
+				id: '6',
+				like: '0',
+				message: this._state.profilePage.newPostText
+			};
+
+			this._state.profilePage.posts.push(newPost);
+			this._state.profilePage.newPostText = '';
+			this._callSubscriber();
+
+		} else if (type === 'UPDATE-NEW-POST-TEXT') {
+			this._state.profilePage.newPostText = action.newText;
+			this._callSubscriber();
+
+		} else if (type === 'ADD-MESSAGE') {
+			let newMessage = {
+				id: '4',
+				message: this._state.dialogsPage.newMessageText
+			};
+
+			this._state.dialogsPage.messages.push(newMessage);
+			this._state.dialogsPage.newMessageText = '';
+			this._callSubscriber();
+
+		} else if (type === 'UPDATE-NEW-MESSAGE-TEXT') {
+			this._state.dialogsPage.newMessageText = action.newText;
+			this._callSubscriber();
+		}
 	}
 
 	addPost() {
