@@ -81,7 +81,7 @@ let store = {
 			this._state.dialogsPage.newMessageText = action.newText;
 			this._callSubscriber();
 		}
-	}
+	},
 
 	addPost() {
 		let newPost = {
