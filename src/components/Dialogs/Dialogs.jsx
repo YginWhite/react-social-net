@@ -5,17 +5,17 @@ import classes from './Dialogs.module.css';
 import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../redux/dialogsReducer'
 
 const Dialogs = (props) => {
-	let dialogs = props.dialogsPage.dialogs.map(({id, name}) => <DialogItem key={id} name={name} id={id}/>);
-	let messages = props.dialogsPage.messages.map(({id, message}) => <Message key={id} message={message}/>);
+	let dialogs = props.dialogs.map(({id, name}) => <DialogItem key={id} name={name} id={id}/>);
+	let messages = props.messages.map(({id, message}) => <Message key={id} message={message}/>);
 
 	let textareaRef = React.createRef();
 	const addMessage = () => {
-		props.dispatch( addMessageActionCreator() );
+		props.addMessage();
 	}
 
-	const onMassageChange = () => {
+	const changeMessage = () => {
 		const text = textareaRef.current.value;
-		props.dispatch( updateNewMessageTextActionCreator(text) );
+		props.changeMessage(text);
 	}
 
 	return (
@@ -31,8 +31,8 @@ const Dialogs = (props) => {
 					<div>
 						<textarea ref={textareaRef} 
 								  cols="50" rows="5"
-								  value={props.dialogsPage.newMessageText}
-								  onChange={onMassageChange}/>
+								  value={props.newMessageText}
+								  onChange={changeMessage}/>
 					</div>
 					<div>
 						<button onClick={addMessage}>Add message</button>
