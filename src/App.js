@@ -12,8 +12,10 @@ import Settings from './components/Settings/Settings';
 const App = (props) => {
 	return (
 		<div className="appContainer">
-			<div className="appContainer-header">Header</div>
-			<div className="appContainer-main">
+			<div className="appContainer-header">
+				<Header />
+			</div>
+			{/*<div className="appContainer-main">
 				Main
 				<div className="test">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
@@ -39,7 +41,7 @@ const App = (props) => {
 					
 				</div>
 			</div>
-			<div className="appContainer-aside">Aside</div>
+			<div className="appContainer-aside">Aside</div>*/}
 		</div>
 	);
 }
