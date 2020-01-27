@@ -1,4 +1,4 @@
-.nav {
+/*.nav {
 	grid-area: nv;
 	background-color: #273746;
 	padding: 10px;
@@ -43,5 +43,49 @@
 	text-align: center;
 	font-size: 0.8em;
 	padding-top: 10px;
+}*/
+
+.appAside {
+	height: 100%;
+	border-right-color: black;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-image: linear-gradient(to top, transparent 0%, gray 40%, gray 60%, transparent 100%);
+	border-image-slice: 1;
+}
+
+.appAside_menu {
+	height: 40%;
+	width: 70%;
+	margin: 7% auto;
+	padding: 0px;
+	list-style: none;
+	color: gray;
+	overflow: hidden;
+}
+
+.appAside_menu_item {
+	height: 14%;
+	width: 100%;
+	padding: 3%;
+	clear: both;
+	border-bottom: 1px solid gray;
+	cursor: pointer;
+}
+
+.appAside_menu_item:last-child {
+	border-bottom: none;
+}
+
+.appAside_menu_item img {
+	height: 100%;
+	float: left;
+}
+
+.appAside_menu_item span {
+	display: block;
+	padding-top: 3%;
+	padding-left: 30%;
+	font-size: 1.5vw;
 }
 

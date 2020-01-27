@@ -1,8 +1,37 @@
 import React from 'react';
-import classes from './Navbar.module.css';
+import clss from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
 
-const Navbar = (props) => {
+
+const Navbar = () => {
+	return (
+		<aside className={clss.appAside}>
+			<ul className={clss.appAside_menu}>
+				<li className={clss.appAside_menu_item}>
+					<img src="https://img.icons8.com/ios/100/000000/contract-job.png"/>
+					<span>Profile</span>
+				</li>
+				<li className={clss.appAside_menu_item}>
+					<img src="https://img.icons8.com/ios/100/000000/multiple-messages.png"/>
+					<span>Messages</span>
+				</li>
+				<li className={clss.appAside_menu_item}>
+					<img src="https://img.icons8.com/carbon-copy/100/000000/news.png"/>
+					<span>News</span>
+				</li>
+				<li className={clss.appAside_menu_item}>
+					<img src="https://img.icons8.com/wired/128/000000/music.png"/>
+					<span>Music</span>
+				</li>
+				<li className={clss.appAside_menu_item}>
+					<img src="https://img.icons8.com/wired/128/000000/settings.png"/>
+					<span>Settings</span>
+				</li>
+			</ul>
+		</aside>
+	);
+}
+/*const Navbar = (props) => {
 	return (
 		<nav className={classes.nav}>
 			<div className={`${classes.item}`}>
@@ -43,6 +72,6 @@ function Friends(props) {
 			{friendsElements}
 		</div>
 	);
-}
+}*/
 
 export default Navbar;

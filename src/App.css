@@ -39,7 +39,7 @@
     right: 0px;
     top: 10%;
     overflow: auto;
-    background-color: purple;
+    /*background-color: purple;*/
 }
 
 .appContainer-aside {
@@ -48,7 +48,7 @@
     height: 90%;
     left: 0px;
     top: 10%;
-    background-color: brown;
+    /*background-color: brown;*/
 }
 
 .test {
