@@ -20,14 +20,14 @@ const Dialogs = (props) => {
 
 	return (
 		<div className={classes.dialogs}>
-			<div className={classes.dialogsItems}>
+			<div className={classes.dialogs_participant}>
 				{dialogs}
 			</div>
-			<div>
-				<div className={classes.messages}>
+			<div className={classes.dialogs_messages}>
+				<div>
 					{messages}
 				</div>
-				<div className={classes.addMessage}>
+				<div className={classes.dialogs_messages_add}>
 					<div>
 						<textarea ref={textareaRef} 
 								  cols="50" rows="5"

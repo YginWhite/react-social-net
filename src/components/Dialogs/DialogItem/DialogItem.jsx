@@ -4,7 +4,7 @@ import classes from './DialogItem.module.css';
 
 const DialogItem = (props) => {
 	return (
-		<div className={classes.dialog}>
+		<div className={classes.dialoItem}>
 			<NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
 		</div>
 	);

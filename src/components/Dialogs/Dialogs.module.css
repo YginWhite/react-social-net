@@ -1,20 +1,27 @@
 .dialogs {
+	height: 100%;
 	display: grid;
 	grid-template-columns: 2fr 10fr;
-	border-left: 2px solid white;
-	padding-left: 10px;
-	padding-top: 10px;
 }
 
-.dialogsItems {
-	color: white;
+.dialogs_participant {
+	border-right-color: black;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-image: linear-gradient(to top, transparent 0%, gray 40%, gray 60%, transparent 100%);
+	border-image-slice: 1;
+	color: gray;
 }
 
-.messages {
-	color: white;
+.dialogs_messages {
+	padding: 2%;
 	overflow: hidden;
 }
 
-.addMessage {
-	padding: 5px;
+.dialogs_messages_add {
+	margin-top: 20%;
+}
+
+.dialogs_messages_add div:last-child {
+	padding-top: 1%;
 }
