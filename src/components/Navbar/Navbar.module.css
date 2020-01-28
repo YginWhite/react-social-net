@@ -97,3 +97,9 @@
 	font-size: 1.5vw;
 }
 
+.appAside_menu_item a {
+	text-decoration: none;
+	color: gray;
+	outline: none;
+}
+

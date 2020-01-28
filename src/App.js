@@ -11,17 +11,27 @@ import Settings from './components/Settings/Settings';
 
 const App = (props) => {
 	return (
-		<div className="appContainer">
-			<div className="appContainer-header">
-				<Header />
+		<BrowserRouter>
+			<div className="appContainer">
+				<div className="appContainer-header">
+					<Header />
+				</div>
+				<div className="appContainer-main">
+					<Route path='/dialogs'
+						   render={() => <DialogsContainer store={props.store} />} />
+
+					<Route path='/profile'
+						   render={() => <Profile store={props.store} />} />
+
+					<Route path='/news' component={News} />
+					<Route path='/music' component={Music} />
+					<Route path='/settings' component={Settings} />
+				</div>
+				<div className="appContainer-aside">
+					<Navbar state={props.store.getState().navbar}/>
+				</div>
 			</div>
-			<div className="appContainer-main">
-				<Profile store={props.store} />
-			</div>
-			<div className="appContainer-aside">
-				<Navbar state={props.store.getState().navbar}/>
-			</div>
-		</div>
+		</BrowserRouter>
 	);
 }
 

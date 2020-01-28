@@ -9,23 +9,23 @@ const Navbar = () => {
 			<ul className={clss.appAside_menu}>
 				<li className={clss.appAside_menu_item}>
 					<img src="https://img.icons8.com/ios/100/000000/contract-job.png"/>
-					<span>Profile</span>
+					<span><NavLink to='/profile'>Profile</NavLink></span>
 				</li>
 				<li className={clss.appAside_menu_item}>
 					<img src="https://img.icons8.com/ios/100/000000/multiple-messages.png"/>
-					<span>Messages</span>
+					<span><NavLink to='/dialogs'>Messages</NavLink></span>
 				</li>
 				<li className={clss.appAside_menu_item}>
 					<img src="https://img.icons8.com/carbon-copy/100/000000/news.png"/>
-					<span>News</span>
+					<span><NavLink to='/news'>News</NavLink></span>
 				</li>
 				<li className={clss.appAside_menu_item}>
 					<img src="https://img.icons8.com/wired/128/000000/music.png"/>
-					<span>Music</span>
+					<span><NavLink to='/music'>Music</NavLink></span>
 				</li>
 				<li className={clss.appAside_menu_item}>
 					<img src="https://img.icons8.com/wired/128/000000/settings.png"/>
-					<span>Settings</span>
+					<span><NavLink to='/settings'>Settings</NavLink></span>
 				</li>
 			</ul>
 		</aside>
