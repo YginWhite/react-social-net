@@ -15,11 +15,11 @@
 
 .dialogs_messages {
 	padding: 2%;
-	overflow: hidden;
 }
 
 .dialogs_messages_add {
-	margin-top: 20%;
+	padding-top: 2%;
+	clear: both;
 }
 
 .dialogs_messages_add div:last-child {
