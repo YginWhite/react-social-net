@@ -1,4 +1,4 @@
-.posts {
+/*.posts {
 	background-color: white;
 	border-radius: 5px 0px 8px 10px;
 }
@@ -21,4 +21,32 @@
 
 .allPosts {
 	
+}*/
+
+.myPosts {
+	margin: 3%;
+}
+
+.myPosts_newpost header {
+	padding-bottom: 1%;
+	color: gray;
+	font-size: 1.2vw;
+}
+
+.myPosts_newpost_body {
+	width: 80%;
+	float: left;
+}
+
+.myPosts_newpost_body textarea {
+	width: 100%;
+}
+
+.myPosts_newpost_submit {
+	margin-left: 81%;
+}
+
+.myPosts_posts {
+	margin-top: 5%;
+	clear: both;
 }

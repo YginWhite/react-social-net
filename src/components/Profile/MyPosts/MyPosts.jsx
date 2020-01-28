@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './MyPosts.module.css';
+import clss from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
@@ -16,19 +16,22 @@ const MyPosts = (props) => {
 	};
 	
 	return (
-		<div className={classes.posts}>
-			<div className={classes.newPost}>
-				<h2>New Post</h2>
-				<div>
+		<div className={clss.myPosts}>
+			<div className={clss.myPosts_newpost}>
+				<header>Create new post:</header>
+
+				<div className={clss.myPosts_newpost_body}>
 					<textarea ref={textareaRef} 
 							  value={props.newPostText}
 							  onChange={updateNewPostText}/>
 				</div>
-				<div>
+
+				<div className={clss.myPosts_newpost_submit}>
 					<button onClick={addPost}>Add Post</button>
 				</div>
 			</div>
-			<div className={classes.allPosts}>
+
+			<div className={clss.myPosts_posts}>
 				{posts}
 			</div>
 		</div>

@@ -1,17 +1,17 @@
 import React from 'react';
-import classes from './Post.module.css';
+import clss from './Post.module.css';
 
 const Post = (props) => {
 	return (
-    	<div className={classes.postBody}>
-    		<div className={classes.postAva}>
-    			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStUh3ZTuqwR7eVwjlLqxninlzeDd_8DP0pKUFgfqFAMEeOS0ZO&s" alt="post_ava"/>
+    	<div className={clss.post}>
+    		<div className={clss.post_ava}>
+    			<img src="https://img.icons8.com/carbon-copy/100/000000/administrator-male.png" />
     		</div>
-    		<div className={classes.postText}>
+    		<div className={clss.post_message}>
     			{props.message}
     		</div>
-            <div>
-                <span className={classes.postLike}>{props.like} Likes</span>
+            <div className={clss.post_likes}>
+                <span>{props.like} Likes</span>
             </div>
     	</div>
   );

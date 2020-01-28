@@ -1,4 +1,4 @@
-.postBody {
+/*.postBody {
 	font-family: 'Times new roman';
 	line-height: 1.2em;
 	margin: 5px 0 5px 10px;
@@ -23,4 +23,32 @@
 	font-size: 0.9em;
 	color: blue;
 	padding-left: 8px;
+}*/
+
+.post {
+	padding-top: 1%;
+	border-bottom: 1px solid lightgray;
+	overflow: hidden;
+}
+
+.post:last-child {
+	border-bottom: none;
+}
+
+.post_ava {
+	float: left;
+	width: 10%;
+}
+
+.post_ava img {
+	width: 100%;
+}
+
+.post_message {
+	font-size: 1.2vw;
+}
+
+.post_likes {
+	color: gray;
+	font-size: 1.1vw;
 }
