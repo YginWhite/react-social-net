@@ -1,27 +1,7 @@
-/*.app-wrapper {
-    display: grid;
-    grid-template-areas:
-    "hdr hdr hdr"
-    "nv cnt cnt";
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    width: 900px;
-    margin: 5px auto;
-    border: 5px solid #273746;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #273746;
-}
-
-.app-wrapper-content { 
-    grid-area: cnt;
-}*/
-
 .appContainer {
     position: absolute;
     width: 100%;
     height: 100%;
-    /*background-color: gray;*/
 }
 
 .appContainer-header {
@@ -29,7 +9,6 @@
     width: 100%;
     height: 10%;
     top: 0px;
-    /*background-color: green;*/
 }
 
 .appContainer-main {
@@ -39,7 +18,6 @@
     right: 0px;
     top: 10%;
     overflow: auto;
-    /*background-color: purple;*/
 }
 
 .appContainer-aside {
@@ -48,5 +26,4 @@
     height: 90%;
     left: 0px;
     top: 10%;
-    /*background-color: brown;*/
 }

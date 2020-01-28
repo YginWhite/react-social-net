@@ -1,18 +1,3 @@
-/*.dialog {
-	padding: 5px;
-}
-
-.dialog a {
-	color: gray;
-	outline: none;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.dialog a:hover {
-	color: yellow;
-}*/
-
 .dialoItem {
 	border-bottom: 1px solid lightgray;
 	font-size: 1.3vw;

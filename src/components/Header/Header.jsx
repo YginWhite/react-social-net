@@ -30,14 +30,4 @@ const Header = () => {
 	);
 }
 
-/*const Header = () => {
-	return (
-		<header className={classes.header}>
-			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDY_4wqrhI71TkYkqtXxiDDgrF8GvD-2TNQp4EUWXvVkSaQRFS&s" alt="Logo"/>
-		</header>
-	);
-}*/
-
-/*<img src="https://img.icons8.com/carbon-copy/100/000000/messaging-.png">*/
-
 export default Header;

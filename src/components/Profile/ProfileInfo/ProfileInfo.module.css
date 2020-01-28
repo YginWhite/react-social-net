@@ -1,25 +1,3 @@
-/*.profileInfo {
-	margin: 10px 0 10px 0;
-}
-
-.profileInfo p {
-	margin-top: 0px;
-	padding: 10px;
-	background-color: white;
-}
-
-.avaImg {
-	width: 100px;
-	border-radius: 5px 0 0 5px;
-}
-
-.contentImg {
-	width: 100%;
- 	border: 3px solid  #17202a;
-  	border-right: none;
-  	border-radius: 40px 0 0 10px;
-}*/
-
 .profileInfo {
 	margin-top: 1%;
 	background-color: white;
