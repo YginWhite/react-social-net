@@ -1,4 +1,4 @@
-.profileInfo {
+/*.profileInfo {
 	margin: 10px 0 10px 0;
 }
 
@@ -18,6 +18,72 @@
  	border: 3px solid  #17202a;
   	border-right: none;
   	border-radius: 40px 0 0 10px;
+}*/
+
+.profileInfo {
+	margin-top: 1%;
+	background-color: white;
+	border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image: linear-gradient(to right, transparent 0%, gray 40%, gray 60%, transparent 100%);
+	border-image-slice: 1;
+	overflow: hidden;
 }
 
+.profileInfo_pict {
+	width: 20%;
+	margin: 3%;
+	float: left;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
 
+.profileInfo_pict p {
+	margin: 5%;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.profileInfo_pict img {
+	width: 99%;
+	border: 1px solid lightgray;
+	border-radius: 7px 7px 0 0;
+}
+
+.profileInfo_pict figcaption {
+	padding: 1%;
+	text-align: center;
+}
+
+.profileInfo_about {
+	margin: 3%;
+	margin-left: 25%;
+	/*border: 1px solid lightgray;*/
+}
+
+.profileInfo_about p {
+	margin: 0;
+	padding: 0;
+}
+
+.profileInfo_about_list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.profileInfo_about_list li {
+	padding-top: 1%;
+}
+
+.profileInfo_about_list span:first-child {
+	display: inline-block;
+	width: 13%;
+	color: gray;
+	font-size: 1.1vw;
+} 
+
+.profileInfo_about_list span:last-child {
+	font-size: 1.2vw;
+}

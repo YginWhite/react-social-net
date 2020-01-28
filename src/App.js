@@ -16,29 +16,7 @@ const App = (props) => {
 				<Header />
 			</div>
 			<div className="appContainer-main">
-				{/*<div className="test">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus, magnam assumenda eius autem repellat, odit adipisci aliquam blanditiis, perspiciatis earum deserunt quam sapiente quis officia facilis veniam magni minus!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla voluptas, ut ipsa, ab sit quasi sapiente minus! Vitae vero doloribus, facere. Corporis asperiores dolorem eos veritatis quas. Consequatur ea, modi?
-					
-				</div>*/}
+				<Profile store={props.store} />
 			</div>
 			<div className="appContainer-aside">
 				<Navbar state={props.store.getState().navbar}/>
