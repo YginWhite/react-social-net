@@ -8,7 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
 	return (
@@ -28,7 +28,7 @@ const App = (props) => {
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} />
 
-					<Route path='/users' component={Users} />
+					<Route path='/users' render={() => <UsersContainer store={props.store}/>} />
 				</div>
 				<div className="appContainer-aside">
 					<Navbar state={props.store.getState().navbar}/>
