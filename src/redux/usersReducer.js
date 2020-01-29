@@ -4,11 +4,12 @@ const SET_USERS = 'SET-USERS';
 
 const initialState = {
 	users: [
+	/*
 		{id: 1, followed: true, fullName: 'Bob Jonson', status: 'I am free ...', location: {city: 'Texas', country: 'USA'}},
 		{id: 2, followed: true, fullName: 'Itan Lin', status: 'Open your mind', location: {city: 'London', country: 'GB'}},
 		{id: 3, followed: false, fullName: 'Sara Star', status: 'Cat is good', location: {city: 'Paris', country: 'France'}},
 		{id: 4, followed: true, fullName: 'Kan Brian', status: 'Chess forevar', location: {city: 'Munhen', country: 'Germany'}}
-		
+	*/	
 	]
 };
 
