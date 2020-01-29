@@ -19,19 +19,19 @@ const App = (props) => {
 				</div>
 				<div className="appContainer-main">
 					<Route path='/dialogs'
-						   render={() => <DialogsContainer store={props.store} />} />
+						   render={() => <DialogsContainer />} />
 
 					<Route path='/profile'
-						   render={() => <Profile store={props.store} />} />
+						   render={() => <Profile />} />
 
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} />
 
-					<Route path='/users' render={() => <UsersContainer store={props.store}/>} />
+					<Route path='/users' render={() => <UsersContainer />} />
 				</div>
 				<div className="appContainer-aside">
-					<Navbar state={props.store.getState().navbar}/>
+					<Navbar />
 				</div>
 			</div>
 		</BrowserRouter>
