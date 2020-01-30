@@ -1,0 +1,64 @@
+.users {
+	height: 90%;
+	margin: 3%;
+}
+
+.users_user {
+	width: 45%;
+	padding: 1%;
+	margin: 1%;
+	float: left;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.users_user_pict {
+	width: 30%;
+	margin: 0;
+	padding: 0;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	float: left;
+}
+
+.users_user_pict img {
+	width: 100%;
+}
+
+.users_user_pict p {
+	margin: 0;
+	padding: 0;
+}
+
+.users_user_pict img {
+	border-radius: 4px 4px 0 0;
+}
+
+.users_user_pict figcaption {
+	padding: 2px;
+	font-size: 1.2vw;
+	text-align: center;
+}
+
+.users_user_list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-left: 33%;
+	font-size: 1.2vw;
+}
+
+.users_user_list span {
+	color: gray;
+	font-size: 1.1vw;
+}
+
+.users_user_btn {
+	padding-top: 5px;
+	clear: both;
+}
+
+.users_user_btn button {
+	font-size: 1.2vw;
+}
