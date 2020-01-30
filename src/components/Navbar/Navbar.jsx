@@ -16,6 +16,10 @@ const Navbar = () => {
 					<span><NavLink to='/dialogs'>Messages</NavLink></span>
 				</li>
 				<li className={clss.appAside_menu_item}>
+					<img src="https://img.icons8.com/dotty/80/000000/user-group-man-woman.png"/>
+					<span><NavLink to='/users'>Users</NavLink></span>
+				</li>
+				<li className={clss.appAside_menu_item}>
 					<img src="https://img.icons8.com/carbon-copy/100/000000/news.png"/>
 					<span><NavLink to='/news'>News</NavLink></span>
 				</li>

@@ -8,7 +8,7 @@
 }
 
 .appAside_menu {
-	height: 40%;
+	height: 50%;
 	width: 70%;
 	margin: 7% auto;
 	padding: 0px;
@@ -18,9 +18,9 @@
 }
 
 .appAside_menu_item {
-	height: 13%;
+	height: 12%;
 	width: 100%;
-	padding: 3%;
+	padding: 2%;
 	clear: both;
 	border-bottom-color: black;
     border-bottom-style: solid;
