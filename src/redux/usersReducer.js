@@ -4,12 +4,43 @@ const SET_USERS = 'SET-USERS';
 
 const initialState = {
 	users: [
-	/*
-		{id: 1, followed: true, fullName: 'Bob Jonson', status: 'I am free ...', location: {city: 'Texas', country: 'USA'}},
-		{id: 2, followed: true, fullName: 'Itan Lin', status: 'Open your mind', location: {city: 'London', country: 'GB'}},
-		{id: 3, followed: false, fullName: 'Sara Star', status: 'Cat is good', location: {city: 'Paris', country: 'France'}},
-		{id: 4, followed: true, fullName: 'Kan Brian', status: 'Chess forevar', location: {city: 'Munhen', country: 'Germany'}}
-	*/	
+		/*{
+			id: 1,
+			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
+			followed: true, 
+			fullName: 'Bob Jonson', 
+			status: 'I am free ...', 
+			location: {city: 'Texas', country: 'USA'}
+		},
+
+		{
+			id: 2,
+			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
+			followed: true, 
+			fullName: 'Itan Lin', 
+			status: 'Open your mind', 
+			location: {city: 'London', 
+			country: 'GB'}
+		},
+
+		{
+			id: 3,
+			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
+			followed: false, 
+			fullName: 'Sara Star', 
+			status: 'Cat is good', 
+			location: {city: 'Paris', 
+			country: 'France'}
+		},
+
+		{
+			id: 4,
+			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
+			followed: true, 
+			fullName: 'Kan Brian', 
+			status: 'Chess forevar', 
+			location: {city: 'Munhen', country: 'Germany'}
+		}*/
 	]
 };
 
