@@ -3,15 +3,12 @@ import clss from './Users.module.css';
 import * as axios from 'axios';
 
 class Users extends React.Component {
-	constructor(props) {
-		super(props);
-
+	componentDidMount() {
 		axios.get("https://social-network.samuraijs.com/api/1.0/users")
 			 .then(response => {
 			 	this.props.setUsers(response.data.items);
 			 });
 	}
-	
 
 	render() {
 		const defaultImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s";
