@@ -26,22 +26,24 @@ class Users extends React.Component {
 	render() {
 		const defaultImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s`;
 		
-		let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+		const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 		const pages = Array(pagesCount).fill(1);
 
 		const buttonsRange = this.props.currentPagesRange;
 		const buttonsCount = this.props.currentPagesCount;
+		const currentPage = this.props.currentPage;
 
 		return (
 			<div className={clss.users}>
-				<div>
+				<div className={clss.users_pagination}>
 					<button onClick={(e) => {this.changeButtonsRange(buttonsCount, '<', pagesCount)}}>{'<'}</button>
 					{pages.map((p, i) => {
 						const n = i + 1;
+						let cls = this.props.currentPage === n ? clss.users_pagination_btn__curr : '';
 						if (n < buttonsRange[0] || n > buttonsRange[1]) return null;
 						return (
 							<span key={n} 
-								  className={this.props.currentPage === n ? clss.cp : ''}
+								  className={`${clss.users_pagination_btn} ${cls}`}
 								  onClick={(e) => {this.changePage(n)}}
 							>
 								{n}

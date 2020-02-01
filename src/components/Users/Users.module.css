@@ -63,7 +63,33 @@
 	font-size: 1.2vw;
 }
 
-.cp {
-	background-color: red;
-	color: white;
+.users_pagination {
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 3%;
 }
+
+.users_pagination_btn {
+	display: inline-block;
+	padding: 5px;
+	margin: 2px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	color: gray;
+	font-size: 1.2vw;
+	cursor: pointer;
+}
+
+.users_pagination_btn:hover {
+	background-color: lightgray;
+}
+
+.users_pagination_btn__curr {
+	background-color: lightgray;
+}
+
+.users_pagination button {
+	color: gray;
+	font-size: 1.2vw;
+}
+
