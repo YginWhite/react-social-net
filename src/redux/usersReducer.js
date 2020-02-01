@@ -1,6 +1,9 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const CHANGE_PAGES_RANGE = 'CHANGE-PAGES-RANGE';
 
 const initialState = {
 	users: [
@@ -41,7 +44,13 @@ const initialState = {
 			status: 'Chess forevar', 
 			location: {city: 'Munhen', country: 'Germany'}
 		}*/
-	]
+	],
+
+	pageSize: 4,
+	totalUsersCount: 0,
+	currentPage: 5,
+	currentPagesCount: 10,
+	currentPagesRange: [1, 10]
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -69,7 +78,27 @@ const usersReducer = (state = initialState, action) => {
 				})
 			};
 		case SET_USERS:
-			return { ...state, users: [...state.users, ...action.users] };
+			return { ...state, users: action.users };
+		case SET_CURRENT_PAGE:
+			return { ...state, currentPage: action.page };
+		case SET_TOTAL_USERS_COUNT:
+			return { ...state, totalUsersCount: action.count };
+		case CHANGE_PAGES_RANGE:
+			const range = state.currentPagesRange;
+			return { 
+				...state,
+				currentPagesRange: (function () {
+					if (action.direction === '>') {
+						if (range[1] >= action.pagesAmount) return [...range];
+						return [ range[0] += action.step,
+								 range[1] += action.step ];
+					} else {
+						if (range[0] === 1) return [1, action.step];
+						else return [ range[0] -= action.step,
+								      range[1] -= action.step ];
+					}
+				})()
+			};
 		default:
 			return state;
 	}
@@ -88,3 +117,15 @@ export const unfollowActionCreator = (userId) => {
 export const setUsersActionCreator = (users) => {
 	return { type: SET_USERS, users };
 };
+
+export const setCurrentPageActionCreator = (page) => {
+	return { type: SET_CURRENT_PAGE, page };
+};
+
+export const setTotalUsersCountActionCreator = (count) => {
+	return {type: SET_TOTAL_USERS_COUNT, count};
+};
+
+export const changePagesRangeActionCreator = (step, direction, pagesAmount) => {
+	return {type: CHANGE_PAGES_RANGE, step, direction, pagesAmount};
+}

@@ -4,17 +4,53 @@ import * as axios from 'axios';
 
 class Users extends React.Component {
 	componentDidMount() {
-		axios.get("https://social-network.samuraijs.com/api/1.0/users")
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+			 .then(response => {
+			 	this.props.setUsers(response.data.items);
+			 	this.props.setUsersCount(response.data.totalCount);
+			 });
+	}
+
+	changePage(pageNumber) {
+		this.props.setPage(pageNumber);
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
 			 .then(response => {
 			 	this.props.setUsers(response.data.items);
 			 });
 	}
 
+	changeButtonsRange(step, direction, pagesAmount) {
+		this.props.changePagesRange(step, direction, pagesAmount);
+	}
+
 	render() {
-		const defaultImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s";
+		const defaultImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s`;
 		
+		let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+		const pages = Array(pagesCount).fill(1);
+
+		const buttonsRange = this.props.currentPagesRange;
+		const buttonsCount = this.props.currentPagesCount;
+
 		return (
 			<div className={clss.users}>
+				<div>
+					<button onClick={(e) => {this.changeButtonsRange(buttonsCount, '<', pagesCount)}}>{'<'}</button>
+					{pages.map((p, i) => {
+						const n = i + 1;
+						if (n < buttonsRange[0] || n > buttonsRange[1]) return null;
+						return (
+							<span key={n} 
+								  className={this.props.currentPage === n ? clss.cp : ''}
+								  onClick={(e) => {this.changePage(n)}}
+							>
+								{n}
+							</span>
+						);
+					})}
+					<button onClick={(e) => {this.changeButtonsRange(buttonsCount, '>', pagesCount)}}>{'>'}</button>
+				</div>
+
 				{this.props.users.map((user) => {
 					return (
 						<div key={user.id} className={clss.users_user}>

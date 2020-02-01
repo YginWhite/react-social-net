@@ -62,3 +62,8 @@
 .users_user_btn button {
 	font-size: 1.2vw;
 }
+
+.cp {
+	background-color: red;
+	color: white;
+}
