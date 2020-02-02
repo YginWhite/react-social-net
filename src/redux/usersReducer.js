@@ -4,6 +4,7 @@ const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const CHANGE_PAGES_RANGE = 'CHANGE-PAGES-RANGE';
+const TOGGLE_IS_FATCHING = 'TOGGLE-IS-FATCHING';
 
 const initialState = {
 	users: [
@@ -50,7 +51,8 @@ const initialState = {
 	totalUsersCount: 0,
 	currentPage: 5,
 	currentPagesCount: 10,
-	currentPagesRange: [1, 10]
+	currentPagesRange: [1, 10],
+	isFetching: false
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -99,6 +101,8 @@ const usersReducer = (state = initialState, action) => {
 					}
 				})()
 			};
+		case TOGGLE_IS_FATCHING:
+			return { ...state, isFetching: action.isFetching };
 		default:
 			return state;
 	}
@@ -129,3 +133,7 @@ export const setTotalUsersCountActionCreator = (count) => {
 export const changePagesRangeActionCreator = (step, direction, pagesAmount) => {
 	return {type: CHANGE_PAGES_RANGE, step, direction, pagesAmount};
 }
+
+export const toggleIsFatchingActionCreator = (isFetching) => {
+	return {type: TOGGLE_IS_FATCHING, isFetching};
+};
