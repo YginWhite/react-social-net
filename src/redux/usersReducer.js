@@ -110,30 +110,10 @@ const usersReducer = (state = initialState, action) => {
 
 export default usersReducer;
 
-export const followActionCreator = (userId) => {
-	return { type: FOLLOW, userId };
-};
-
-export const unfollowActionCreator = (userId) => {
-	return { type: UNFOLLOW, userId };
-};
-
-export const setUsersActionCreator = (users) => {
-	return { type: SET_USERS, users };
-};
-
-export const setCurrentPageActionCreator = (page) => {
-	return { type: SET_CURRENT_PAGE, page };
-};
-
-export const setTotalUsersCountActionCreator = (count) => {
-	return {type: SET_TOTAL_USERS_COUNT, count};
-};
-
-export const changePagesRangeActionCreator = (step, direction, pagesAmount) => {
-	return {type: CHANGE_PAGES_RANGE, step, direction, pagesAmount};
-}
-
-export const toggleIsFatchingActionCreator = (isFetching) => {
-	return {type: TOGGLE_IS_FATCHING, isFetching};
-};
+export const follow = (userId) => ({ type: FOLLOW, userId });
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
+export const setTotalUsersCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count});
+export const changePagesRange = (step, direction, pagesAmount) => ({type: CHANGE_PAGES_RANGE, step, direction, pagesAmount});
+export const toggleIsFatching = (isFetching) => ({type: TOGGLE_IS_FATCHING, isFetching});

@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Users from './Users';
-import { followActionCreator, unfollowActionCreator,
-		 setUsersActionCreator, setCurrentPageActionCreator,
-		 setTotalUsersCountActionCreator, changePagesRangeActionCreator,
-		 toggleIsFatchingActionCreator } from './../../redux/usersReducer';
+import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange,
+		 toggleIsFatching } from './../../redux/usersReducer';
 import * as axios from 'axios';
 import Preloader from './../common/Preloader/Preloader';
 
@@ -15,13 +13,13 @@ class UsersContainer extends React.Component {
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
 			 .then(response => {
 			 	this.props.setUsers(response.data.items);
-			 	this.props.setUsersCount(response.data.totalCount);
+			 	this.props.setTotalUsersCount(response.data.totalCount);
 			 	this.props.toggleIsFatching(false);
 			 });
 	}
 
 	changePage = (e, pageNumber) => {
-		this.props.setPage(pageNumber);
+		this.props.setCurrentPage(pageNumber);
 		this.props.toggleIsFatching(true);
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
 			 .then(response => {
@@ -67,36 +65,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		follow: (userId) => {
-			dispatch( followActionCreator(userId) );
-		},
-
-		unfollow: (userId) => {
-			dispatch( unfollowActionCreator(userId) );
-		},
-
-		setUsers: (users) => {
-			dispatch( setUsersActionCreator(users) );
-		},
-
-		setPage: (page) => {
-			dispatch( setCurrentPageActionCreator(page) );
-		},
-
-		setUsersCount: (count) => {
-			dispatch( setTotalUsersCountActionCreator(count) );
-		},
-
-		changePagesRange: (step, direction, pagesAmount) => {
-			dispatch( changePagesRangeActionCreator(step, direction, pagesAmount) );
-		},
-
-		toggleIsFatching: (isFetching) => {
-			dispatch( toggleIsFatchingActionCreator(isFetching) );
-		}
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(
+	mapStateToProps, 
+	{ follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange, toggleIsFatching }
+)(UsersContainer);
