@@ -1,5 +1,6 @@
 import React from 'react';
 import clss from './Users.module.css';
+import {NavLink} from 'react-router-dom';
 
 const defaultImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s`;
 
@@ -37,8 +38,10 @@ const Users = (props) => {
 					<div key={user.id} className={clss.users_user}>
 						<figure className={clss.users_user_pict}>
 							<p>
-								{user.photos.small ? <img src={user.photos.small}/> :
-													 <img src={defaultImg}/>}
+								<NavLink to={`/profile/${user.id}`}>
+									{user.photos.small ? <img src={user.photos.small}/> :
+														 <img src={defaultImg}/>}
+								</NavLink>
 							</p>	
 							<figcaption>{user.fullName ? user.fullName : user.name}</figcaption>
 						</figure>
