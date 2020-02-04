@@ -67,6 +67,16 @@
 	color: white;
 }
 
+.appHeader_logged {
+	position: absolute;
+	top: 25%;
+	right: 1%;
+	padding: 3px;
+	border: 1px solid gray;
+	border-radius: 3px;
+	font-size: 1.2vw;
+}
+
 .appHeader_slogan {
 	position: absolute;
 	width: 15%;
