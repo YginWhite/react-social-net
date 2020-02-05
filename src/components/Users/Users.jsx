@@ -12,7 +12,6 @@ const Users = (props) => {
 
 	const buttonsRange = props.currentPagesRange;
 	const buttonsCount = props.currentPagesCount;
-	const currentPage = props.currentPage;
 
 	return (
 		<div className={clss.users}>
@@ -40,8 +39,8 @@ const Users = (props) => {
 						<figure className={clss.users_user_pict}>
 							<p>
 								<NavLink to={`/profile/${user.id}`}>
-									{user.photos.small ? <img src={user.photos.small}/> :
-														 <img src={defaultImg}/>}
+									{user.photos.small ? <img alt="userImg" src={user.photos.small}/> :
+														 <img alt="userImg" src={defaultImg}/>}
 								</NavLink>
 							</p>	
 							<figcaption>{user.fullName ? user.fullName : user.name}</figcaption>
