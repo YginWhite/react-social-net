@@ -1,6 +1,7 @@
 import React from 'react';
 import clss from './Users.module.css';
 import {NavLink} from 'react-router-dom';
+import * as axios from 'axios';
 
 const defaultImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s`;
 
@@ -52,8 +53,33 @@ const Users = (props) => {
 						</ul>
 						<div className={clss.users_user_btn}>
 							{user.followed ? 
-								<button onClick={() => {props.unfollow(user.id)}}>unfollow</button> : 
-								<button onClick={() => {props.follow(user.id)}}>follow</button>}
+								<button onClick={() => {
+									axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+											withCredentials: true,
+											headers: {
+												"API-KEY": 'e5d1f936-1a42-40a4-a370-b6ac01f1ff1d'
+											}
+										 })
+										 .then(response => {
+										 	if (response.data.resultCode === 0) {
+										 		props.unfollow(user.id)
+										 	}
+										 });
+								}}>unfollow</button> : 
+
+								<button onClick={() => {
+									axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+											withCredentials: true,
+											headers: {
+												"API-KEY": 'e5d1f936-1a42-40a4-a370-b6ac01f1ff1d'
+											}
+										 })
+										 .then(response => {
+										 	if (response.data.resultCode === 0) {
+										 		props.follow(user.id);
+										 	}
+										 });
+								}}>follow</button>}
 						</div>
 					</div>
 				);
