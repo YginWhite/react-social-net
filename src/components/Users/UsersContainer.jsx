@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Users from './Users';
 import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange,
-		 toggleIsFatching } from './../../redux/usersReducer';
+		 toggleIsFatching, toggleFollowing } from './../../redux/usersReducer';
 import Preloader from './../common/Preloader/Preloader';
 import {usersAPI} from './../../api/api';
 
@@ -40,10 +40,12 @@ class UsersContainer extends React.Component {
 				 		   currentPage={this.props.currentPage}
 				 		   currentPagesCount={this.props.currentPagesCount}
 				 		   currentPagesRange={this.props.currentPagesRange}
+				 		   followingUsersInProgress={this.props.followingUsersInProgress}
 				 		  
 				 		   follow={this.props.follow}
 				 		   unfollow={this.props.unfollow}
 				 		   changePagesRange={this.props.changePagesRange}
+				 		   toggleFollowing = {this.props.toggleFollowing}
 
 				 		   changePage={this.changePage}
 				 	/>
@@ -61,11 +63,12 @@ const mapStateToProps = (state) => {
 		currentPage: state.usersPage.currentPage,
 		currentPagesCount: state.usersPage.currentPagesCount,
 		currentPagesRange: state.usersPage.currentPagesRange,
-		isFetching: state.usersPage.isFetching
+		isFetching: state.usersPage.isFetching,
+		followingUsersInProgress: state.usersPage.followingUsersInProgress
 	};
 };
 
 export default connect(
 	mapStateToProps, 
-	{ follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange, toggleIsFatching }
+	{ follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange, toggleIsFatching, toggleFollowing }
 )(UsersContainer);
