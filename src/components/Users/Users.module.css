@@ -64,12 +64,13 @@
 }
 
 .users_pagination {
-	width: 70%;
+	width: 75%;
 	margin: 0 auto;
 	margin-bottom: 3%;
 }
 
 .users_pagination_btn {
+	width: 6%;
 	display: inline-block;
 	padding: 5px;
 	margin: 2px;
@@ -78,6 +79,7 @@
 	color: gray;
 	font-size: 1.2vw;
 	cursor: pointer;
+	text-align: center;
 }
 
 .users_pagination_btn:hover {
