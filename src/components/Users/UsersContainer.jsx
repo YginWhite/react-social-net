@@ -1,31 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Users from './Users';
-import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange,
-		 toggleIsFatching, toggleFollowing } from './../../redux/usersReducer';
+import { follow, unfollow,  changePagesRange,
+		 getUsers, changePage } from './../../redux/usersReducer';
+
 import Preloader from './../common/Preloader/Preloader';
-import {usersAPI} from './../../api/api';
 
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
-		this.props.toggleIsFatching(true);
-		usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-				.then(data => {
-					this.props.setUsers(data.items);
-					this.props.setTotalUsersCount(data.totalCount);
-					this.props.toggleIsFatching(false);
-				});
+		this.props.getUsers(this.props.currentPage, this.props.pageSize);
 	}
 
 	changePage = (e, pageNumber) => {
-		this.props.setCurrentPage(pageNumber);
-		this.props.toggleIsFatching(true);
-		usersAPI.getUsers(pageNumber, this.props.pageSize)
-				.then(data => {
-					this.props.setUsers(data.items);
-			 		this.props.toggleIsFatching(false);
-				});
+		this.props.changePage(pageNumber, this.props.pageSize);
 	}
 
 	render() {
@@ -45,7 +33,6 @@ class UsersContainer extends React.Component {
 				 		   follow={this.props.follow}
 				 		   unfollow={this.props.unfollow}
 				 		   changePagesRange={this.props.changePagesRange}
-				 		   toggleFollowing = {this.props.toggleFollowing}
 
 				 		   changePage={this.changePage}
 				 	/>
@@ -70,5 +57,6 @@ const mapStateToProps = (state) => {
 
 export default connect(
 	mapStateToProps, 
-	{ follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, changePagesRange, toggleIsFatching, toggleFollowing }
+	{ follow, unfollow, changePagesRange,
+	  getUsers, changePage }
 )(UsersContainer);

@@ -1,7 +1,6 @@
 import React from 'react';
 import clss from './Users.module.css';
 import {NavLink} from 'react-router-dom';
-import {usersAPI} from './../../api/api';
 
 const defaultImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s`;
 
@@ -39,40 +38,33 @@ const Users = (props) => {
 						<figure className={clss.users_user_pict}>
 							<p>
 								<NavLink to={`/profile/${user.id}`}>
-									{user.photos.small ? <img alt="userImg" src={user.photos.small}/> :
-														 <img alt="userImg" src={defaultImg}/>}
+									{
+										user.photos.small 
+											? <img alt="userImg" src={user.photos.small}/>
+											: <img alt="userImg" src={defaultImg}/>
+									}
 								</NavLink>
 							</p>	
 							<figcaption>{user.fullName ? user.fullName : user.name}</figcaption>
 						</figure>
+
 						<ul className={clss.users_user_list}>
 							<li><span>Country: </span>{"user.location.country"}</li>
 							<li><span>City: </span>{"user.location.city"}</li>
 							<li><span>Status: </span>{user.status}</li>
 						</ul>
-						<div className={clss.users_user_btn}>
-							{user.followed
-								? <button disabled={props.followingUsersInProgress.some(id => id === user.id)}
-										  onClick={() => {
-										  	props.toggleFollowing(true, user.id);
-											usersAPI.unfollowUser(user.id).then(data => {
-												if (data.resultCode === 0) {
-													props.unfollow(user.id);
-												}
-												props.toggleFollowing(false, user.id);
-											});
-								}}>unfollow</button> 
 
-								: <button disabled={props.followingUsersInProgress.some(id => id === user.id)}
-										  onClick={() => {
-										  	props.toggleFollowing(true, user.id);
-											usersAPI.followUser(user.id).then(data => {
-												if (data.resultCode === 0) {
-													props.follow(user.id);
-												}
-												props.toggleFollowing(false, user.id);
-											});
-								}}>follow</button>}
+						<div className={clss.users_user_btn}>
+							{ 
+								user.followed
+									? <button 
+										disabled={ props.followingUsersInProgress.some(id => id === user.id) }
+										onClick={ () => props.unfollow(user.id) }>unfollow</button> 
+
+									: <button 
+										disabled={props.followingUsersInProgress.some(id => id === user.id)}
+										onClick={() => props.follow(user.id)}>follow</button> 
+							}
 						</div>
 					</div>
 				);

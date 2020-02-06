@@ -1,3 +1,5 @@
+import {usersAPI} from './../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -8,46 +10,7 @@ const TOGGLE_IS_FATCHING = 'TOGGLE-IS-FATCHING';
 const TOGGLE_FOLLOWING = 'TOGGLE_FOLLOWING';
 
 const initialState = {
-	users: [
-		/*{
-			id: 1,
-			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
-			followed: true, 
-			fullName: 'Bob Jonson', 
-			status: 'I am free ...', 
-			location: {city: 'Texas', country: 'USA'}
-		},
-
-		{
-			id: 2,
-			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
-			followed: true, 
-			fullName: 'Itan Lin', 
-			status: 'Open your mind', 
-			location: {city: 'London', 
-			country: 'GB'}
-		},
-
-		{
-			id: 3,
-			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
-			followed: false, 
-			fullName: 'Sara Star', 
-			status: 'Cat is good', 
-			location: {city: 'Paris', 
-			country: 'France'}
-		},
-
-		{
-			id: 4,
-			imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS59F9C4DK6066H7NHNgZZXg_gxBbCEfE4ta9enVNq1953lDO4Qg&s",
-			followed: true, 
-			fullName: 'Kan Brian', 
-			status: 'Chess forevar', 
-			location: {city: 'Munhen', country: 'Germany'}
-		}*/
-	],
-
+	users: [],
 	pageSize: 4,
 	totalUsersCount: 0,
 	currentPage: 1,
@@ -120,11 +83,59 @@ const usersReducer = (state = initialState, action) => {
 
 export default usersReducer;
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const setTotalUsersCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count});
 export const changePagesRange = (step, direction, pagesAmount) => ({type: CHANGE_PAGES_RANGE, step, direction, pagesAmount});
 export const toggleIsFatching = (isFetching) => ({type: TOGGLE_IS_FATCHING, isFetching});
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING, isFetching, userId});
+
+export const getUsers = (currentPage, pageSize) => {
+	return (dispatch) => {
+		dispatch(toggleIsFatching(true));
+		usersAPI.getUsers(currentPage, pageSize)
+				.then(data => {
+					dispatch(setUsers(data.items));
+					dispatch(setTotalUsersCount(data.totalCount));
+					dispatch(toggleIsFatching(false));
+				});
+	};
+};
+
+export const changePage = (pageNumber, pageSize) => {
+	return (dispatch) => {
+		dispatch(setCurrentPage(pageNumber));
+		dispatch(toggleIsFatching(true));
+		usersAPI.getUsers(pageNumber, pageSize)
+				.then(data => {
+					dispatch(setUsers(data.items));
+			 		dispatch(toggleIsFatching(false));
+				});
+	};
+};
+
+export const follow = (userId) => {
+	return (dispatch) => {
+	  	dispatch(toggleFollowing(true, userId));
+		usersAPI.followUser(userId).then(data => {
+			if (data.resultCode === 0) {
+				dispatch(followSuccess(userId));
+			}
+			dispatch(toggleFollowing(false, userId));
+		});
+	};
+};
+
+export const unfollow = (userId) => {
+	return (dispatch) => {
+  	  	dispatch(toggleFollowing(true, userId));
+  		usersAPI.unfollowUser(userId).then(data => {
+  			if (data.resultCode === 0) {
+  				dispatch(unfollowSuccess(userId));
+  			}
+  			dispatch(toggleFollowing(false, userId));
+  		});
+	};
+};
