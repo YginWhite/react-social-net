@@ -1,6 +1,7 @@
 import React from 'react';
 import clss from './ProfileInfo.module.css';
 import Preloader from './../../common/Preloader/Preloader';
+import ProfileInfoStatus from './ProfileInfoStatus';
 
 const ProfileInfo = (props) => {
 	if (!props.profile) return <Preloader />;
@@ -23,6 +24,12 @@ const ProfileInfo = (props) => {
 						<span>Full Name:</span>
 						<span>{props.profile.fullName}</span>
 					</li>
+
+					<li className={clss.profileInfo_about_listItem}>
+						<span>Status:</span>
+						<ProfileInfoStatus />
+					</li>
+
 					<li className={clss.profileInfo_about_listItem}>
 						<span>Looking for a job:</span>
 						<span>{props.profile.lookingForAJob ? 'yes': 'no'}</span>
