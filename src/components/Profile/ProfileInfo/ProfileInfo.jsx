@@ -27,7 +27,7 @@ const ProfileInfo = (props) => {
 
 					<li className={clss.profileInfo_about_listItem}>
 						<span>Status:</span>
-						<ProfileInfoStatus />
+						<ProfileInfoStatus status={props.status} changeStatus={props.changeStatus}/>
 					</li>
 
 					<li className={clss.profileInfo_about_listItem}>
