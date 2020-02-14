@@ -1,0 +1,17 @@
+.loginCont {
+	width: 40%;
+	margin: 5% auto;
+	padding: 3%;
+	border: 1px solid lightgray;
+	border-radius: 7px;
+	font-size: 1.3vw;
+}
+
+.loginCont h1 {
+	text-align: center;
+	font-size: 1.3vw;
+}
+
+.loginForm div {
+	padding-top: 5%;
+}
