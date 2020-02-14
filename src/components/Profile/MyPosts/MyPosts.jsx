@@ -1,18 +1,13 @@
 import React from 'react';
 import clss from './MyPosts.module.css';
 import Post from './Post/Post';
+import {reduxForm, Field} from 'redux-form';
 
 const MyPosts = (props) => {
 	let posts =  props.posts.map(({id, like, message}) => <Post key={id} like={like} message={message}/>);
 
-	let textareaRef = React.createRef();
-	let addPost = () => {
-		props.addPost();
-	}
-
-	let updateNewPostText = () => {
-		const text = textareaRef.current.value;
-		props.updateNewPostText(text);
+	const onAddPost = (formData) => {
+		props.addPost(formData.newPost);
 	};
 	
 	return (
@@ -20,15 +15,7 @@ const MyPosts = (props) => {
 			<div className={clss.myPosts_newpost}>
 				<header>Create new post:</header>
 
-				<div className={clss.myPosts_newpost_body}>
-					<textarea ref={textareaRef} 
-							  value={props.newPostText}
-							  onChange={updateNewPostText}/>
-				</div>
-
-				<div className={clss.myPosts_newpost_submit}>
-					<button onClick={addPost}>Add Post</button>
-				</div>
+				<PostForm onSubmit={onAddPost}/>
 			</div>
 
 			<div className={clss.myPosts_posts}>
@@ -37,5 +24,21 @@ const MyPosts = (props) => {
 		</div>
 	);
 };
+
+let PostForm = (props) => {
+	return (
+		<form onSubmit={props.handleSubmit}>
+			<div className={clss.myPosts_newpost_body}>
+				<Field name="newPost" component="textarea" placeholder="write new post..."/>
+			</div>
+
+			<div className={clss.myPosts_newpost_submit}>
+				<button>Add Post</button>
+			</div>
+		</form>
+	);
+};
+
+PostForm = reduxForm({form: 'myPostsAddPost'})(PostForm);
 
 export default MyPosts;
