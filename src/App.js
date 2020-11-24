@@ -2,8 +2,9 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import './styles/default.css';
 import './styles/fonts.css';
-import pict02 from './images/pic02.jpg';
 import pict01 from './images/pic01.jpg';
+
+import HeaderContainer from './components/Header/HeaderContainer';
 
 // import './App.css';
 // import HeaderContainer from './components/Header/HeaderContainer';
@@ -20,22 +21,7 @@ const App = (props) => {
 	return (
 		<BrowserRouter>
 			<div id="page" className="container">
-				<div id="header">
-					<div id="logo">
-						<img src={pict02} alt="avatar" />
-						<h1><a href="#">Privy</a></h1>
-						<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
-					</div>
-					<div id="menu">
-						<ul>
-							<li className="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-							<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-							<li><a href="#" accesskey="3" title="">About Us</a></li>
-							<li><a href="#" accesskey="4" title="">Careers</a></li>
-							<li><a href="#" accesskey="5" title="">Contact Us</a></li>
-						</ul>
-					</div>
-				</div>
+				<HeaderContainer />
 
 				<div id="main">
 					<div id="banner">
