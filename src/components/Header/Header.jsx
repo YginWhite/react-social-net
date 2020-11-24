@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 import pict02 from './../../images/pic02.jpg';
+import Navbar from './../Navbar/Navbar'
 
 const Header = (props) => {
 	return (
@@ -18,15 +19,7 @@ const Header = (props) => {
 						</div>}
 			</div>
 
-			<div id="menu">
-				<ul>
-					<li className="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-					<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-					<li><a href="#" accesskey="3" title="">About Us</a></li>
-					<li><a href="#" accesskey="4" title="">Careers</a></li>
-					<li><a href="#" accesskey="5" title="">Contact Us</a></li>
-				</ul>
-			</div>
+			<Navbar />
 		</div>
 	);
 }
