@@ -1,15 +1,15 @@
 .users {
-	height: 90%;
-	margin: 3%;
+	overflow: hidden;
+	margin-bottom: 3em;
 }
 
 .users_user {
-	width: 45%;
-	padding: 1%;
-	margin: 1%;
+	box-sizing: border-box;
+	width: calc(50% - 2em);
 	float: left;
-	border: 1px solid lightgray;
-	border-radius: 8px;
+	margin: 0.5em;
+	padding: 1em;
+	background-color: #f7f9f9;
 	overflow: hidden;
 }
 
@@ -36,8 +36,9 @@
 }
 
 .users_user_pict figcaption {
-	padding: 2px;
-	font-size: 1.2vw;
+	margin-top: -5px;
+	padding: 0.2em;
+	font-size: 1em;
 	text-align: center;
 }
 
@@ -45,8 +46,8 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	margin-left: 33%;
-	font-size: 1.2vw;
+	margin-left: 35%;
+	text-align: left;
 }
 
 .users_user_list span {
@@ -55,35 +56,42 @@
 }
 
 .users_user_btn {
-	padding-top: 5px;
+	padding-top: 0.5em;
 	clear: both;
+	text-align: left;
 }
 
 .users_user_btn button {
-	font-size: 1.2vw;
+	background-color: inherit;
+	border: none;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.users_user_btn button span {
+	background-color: inherit;
+	color: #2980b9;
 }
 
 .users_pagination {
 	width: 75%;
 	margin: 0 auto;
-	margin-bottom: 3%;
+	margin-bottom: 3em;
 }
 
 .users_pagination_btn {
 	width: 6%;
 	display: inline-block;
-	padding: 5px;
-	margin: 2px;
-	border: 1px solid lightgray;
-	border-radius: 3px;
+	padding: 0.2em;
+	margin: 0 2px;
 	color: gray;
-	font-size: 1.2vw;
+	font-size: 1.5em;
 	cursor: pointer;
 	text-align: center;
 }
 
 .users_pagination_btn:hover {
-	background-color: lightgray;
+	background-color: #f0f3f4;
 }
 
 .users_pagination_btn__curr {
@@ -91,7 +99,20 @@
 }
 
 .users_pagination button {
-	color: gray;
-	font-size: 1.2vw;
+	padding: 0.2em;
+	border: none;
+	background-color: inherit;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+.users_pagination button:hover span {
+	color: #2980b9;
+}
+
+
+
+.users_pagination button span {
+	background-color: inherit;
 }
 

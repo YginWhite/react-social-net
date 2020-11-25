@@ -6,6 +6,7 @@ import pict01 from './images/pic01.jpg';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 // import './App.css';
 // import HeaderContainer from './components/Header/HeaderContainer';
@@ -32,6 +33,8 @@ const App = (props) => {
 
 					<Route path='/profile/:userId?'
 						render={() => <ProfileContainer />} />
+
+					<Route path='/users' render={() => <UsersContainer />} />
 
 					
 					<div id="copyright">
