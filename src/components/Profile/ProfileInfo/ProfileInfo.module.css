@@ -5,6 +5,7 @@
 
 .profile_photo {
 	float: left;
+	margin-top: 0;
 }
 
 .profile_about {
@@ -20,6 +21,7 @@
 }
 
 .profile_photo {
+	margin-top: 0.5em;
 	border: 1px solid lightgray;
 	border-radius: 5px;
 }
