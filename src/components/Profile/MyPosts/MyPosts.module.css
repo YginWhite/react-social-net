@@ -1,27 +1,39 @@
-.myPosts {
-	margin: 3%;
+.posts_form {
+	margin-top: 1em;
 }
 
-.myPosts_newpost header {
-	padding-bottom: 1%;
+.posts_form > div {
+	display: block;
+	margin-top: 1em;
+}
+
+.posts_form textarea {
+	width: 90%;
+	padding: 1em;
+	background-color:  #f7f9f9;
+	border: none;
+	font-size: 0.7em;
+	cursor: pointer;
+}
+
+.posts_form button {
+	background-color: white;
+	border: none;
+	padding: 1em;
 	color: gray;
-	font-size: 1.2vw;
+	font-size: 0.65em;
+	cursor: pointer;
 }
 
-.myPosts_newpost_body {
-	width: 80%;
-	float: left;
+.posts_form button:hover {
+	background-color:  #f0f3f4;
+	color: #2980b9;
 }
 
-.myPosts_newpost_body textarea {
-	width: 100%;
+.posts_form button span {
+	background-color: inherit;
 }
 
-.myPosts_newpost_submit {
-	margin-left: 81%;
-}
-
-.myPosts_posts {
-	margin-top: 5%;
-	clear: both;
+.posts_form button span:first-child {
+	padding: 0 0 10px 0;
 }

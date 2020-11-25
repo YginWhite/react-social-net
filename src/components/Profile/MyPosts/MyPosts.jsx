@@ -1,43 +1,46 @@
 import React from 'react';
-import clss from './MyPosts.module.css';
+import style from './MyPosts.module.css';
 import Post from './Post/Post';
 import {reduxForm, Field} from 'redux-form';
 import {required, maxLength} from './../../../utils/validators';
 
 const MyPosts = (props) => {
-	let posts =  props.posts.map(({id, like, message}) => <Post key={id} like={like} message={message}/>);
+	let posts =  props.posts.map(({id, like, message}, ind) => <Post key={id} like={like} message={message} ind={ind}/>);
 
 	const onAddPost = (formData) => {
 		props.addPost(formData.newPost);
 	};
-	
+
 	return (
-		<div className={clss.myPosts}>
-			<div className={clss.myPosts_newpost}>
-				<header>Create new post:</header>
-
-				<PostForm onSubmit={onAddPost}/>
+		<div id="featured">
+			<div className="title">
+				<h2>My posts</h2>
+				<div className="byline">
+					<span>Create new post:</span>
+					<PostForm onSubmit={onAddPost}/>
+				</div>
 			</div>
 
-			<div className={clss.myPosts_posts}>
+			<ul class="style1">
 				{posts}
-			</div>
+			</ul>
 		</div>
 	);
 };
 
-
 const maxLength20 = maxLength(20);
 let PostForm = (props) => {
 	return (
-		<form onSubmit={props.handleSubmit}>
-			<div className={clss.myPosts_newpost_body}>
-				<Field name="newPost" component="textarea" placeholder="write new post..."
+		<form onSubmit={props.handleSubmit} className={style.posts_form}>
+			<div>
+				<Field name="newPost" component="textarea" placeholder="write new post..." rows="6"
 				       validate={[required, maxLength20]} />
 			</div>
-
-			<div className={clss.myPosts_newpost_submit}>
-				<button>Add Post</button>
+			<div>
+				<button className="button">
+					<span className="fa fa-pencil"></span>
+					<span>Add Post</span>
+				</button>
 			</div>
 		</form>
 	);
