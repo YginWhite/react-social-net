@@ -1,74 +1,60 @@
-.profileInfo {
-	margin-top: 1%;
-	background-color: white;
-	border-bottom-color: black;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-image: linear-gradient(to right, transparent 0%, gray 40%, gray 60%, transparent 100%);
-	border-image-slice: 1;
+.profile_container {
 	overflow: hidden;
+	margin-bottom: 1em;
 }
 
-.profileInfo_pict {
-	width: 30%;
-	margin: 3%;
+.profile_photo {
 	float: left;
-	border: 1px solid lightgray;
-	border-radius: 10px;
 }
 
-.profileInfo_pict p {
-	margin: 5%;
-	margin-bottom: 0;
-	padding: 0;
+.profile_about {
+	text-align: left;	
 }
 
-.profileInfo_pict img {
-	width: 99%;
-	border: 1px solid lightgray;
-	border-radius: 7px 7px 0 0;
+.profile_about li {
+	padding: 0.5em;
 }
 
-.profileInfo_pict figcaption {
-	padding: 1%;
-	text-align: center;
-	font-size: 1.2vw;
-}
-
-.profileInfo_about {
-	margin: 3%;
-	margin-left: 35%;
-}
-
-.profileInfo_about p {
-	margin: 0;
-	padding: 0;
-}
-
-.profileInfo_about_list {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-.profileInfo_about_listItem {
-	padding-top: 1%;
-}
-
-.profileInfo_about_listItem > span:first-child {
-	display: inline-block;
-	width: 25%;
+.profile_about li > span:first-child {
 	color: gray;
-	font-size: 1.1vw;
-} 
-
-.profileInfo_about_listItem > span + span {
-	font-size: 1.2vw;
 }
 
-.profileInfo_about_contacts {
-	padding: 0;
+.profile_photo {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+
+.profile_photo img {
+	border-radius: 5px;
+}
+
+.profile_photo p {
 	margin: 0;
-	list-style: none;
-	font-size: 1.2vw;
+}
+
+.profile_photo figcaption {
+	padding: 5px;
+}
+
+.profile_contact {
+	display: inline-block;
+}
+
+.profile_contact a {
+	padding: 1em;
+}
+
+.profile_contact span {
+	background-color: inherit;
+	color: #2980b9;
+}
+
+.profile_contact a:hover {
+	background-color:  #f0f3f4;
+	color: blue;
+}
+
+.profile_contacts {
+	margin-top: 1em;
+	margin-bottom: 5em;
 }

@@ -5,6 +5,7 @@ import './styles/fonts.css';
 import pict01 from './images/pic01.jpg';
 
 import HeaderContainer from './components/Header/HeaderContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 // import './App.css';
 // import HeaderContainer from './components/Header/HeaderContainer';
@@ -28,16 +29,11 @@ const App = (props) => {
 						<img src={pict01} alt="banner" class="image-full" />
 					</div>
 
-					<div id="welcome">
-						<div class="title">
-							<h2>Fusce ultrices fringilla metus</h2>
-							<span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span>
-						</div>
-						<p>This is <strong>Privy</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
-						<ul class="actions">
-							<li><a href="#" class="button">Etiam posuere</a></li>
-						</ul>
-					</div>
+
+					<Route path='/profile/:userId?'
+						render={() => <ProfileContainer />} />
+
+
 
 					<div id="featured">
 						<div class="title">
