@@ -8,6 +8,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import News from './components/News/News';
 
 // import './App.css';
 // import HeaderContainer from './components/Header/HeaderContainer';
@@ -32,11 +33,10 @@ const App = (props) => {
 					</div>
 
 
-					<Route path='/profile/:userId?'
-						render={() => <ProfileContainer />} />
+					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
-					<Route path='/dialogs'
-						render={() => <DialogsContainer />} />
+					<Route path='/dialogs' render={() => <DialogsContainer />} />
+					<Route path='/news' component={News} />
 
 					
 					<div id="copyright">
