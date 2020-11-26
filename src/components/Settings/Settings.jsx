@@ -1,10 +1,13 @@
 import React from 'react';
-//import classes from './Settings.module.css';
+//import style from './Settings.module.css';
 
 const Settings = () => {
 	return (
 		<div>
-			Settings
+			<div className="title">
+				<h2>Settings</h2>
+				<span className="byline">Make your custom settings</span>
+			</div>
 		</div>
 	);
 };

@@ -1,10 +1,13 @@
 import React from 'react';
-//import classes from './Music.module.css';
+//import style from './Music.module.css';
 
 const Music = () => {
 	return (
 		<div>
-			Music
+			<div className="title">
+				<h2>Music</h2>
+				<span className="byline">There is cool music</span>
+			</div>
 		</div>
 	);
 };
