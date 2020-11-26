@@ -8,7 +8,7 @@ const Navbar = () => {
 
 
 		<div id="menu">
-			<ul>
+			<ul className={style.menu}>
 				<li className="current_page_item">
 					<NavLink to='/profile'>Profile</NavLink>
 				</li>

@@ -1,0 +1,4 @@
+.menu li:hover a {
+	background: #2980b9;
+	color: rgba(255,255,255,1);
+} 
