@@ -13,10 +13,10 @@ const Navbar = () => {
 					<NavLink to='/profile'>Profile</NavLink>
 				</li>
 				<li>
-					<NavLink to='/dialogs'>Messages</NavLink>
+					<NavLink to='/users'>Users</NavLink>
 				</li>
 				<li>
-					<NavLink to='/users'>Users</NavLink>
+					<NavLink to='/dialogs'>Messages</NavLink>
 				</li>
 				<li>
 					<NavLink to='/news'>News</NavLink>
