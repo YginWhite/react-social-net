@@ -1,27 +1,62 @@
+.dialogs_container {
+	margin-bottom: 3em;
+}
+
 .dialogs {
-	height: 100%;
 	display: grid;
-	grid-template-columns: 2fr 10fr;
+	grid-template-columns: 3fr 10fr;
 }
 
 .dialogs_participant {
 	border-right-color: black;
     border-right-style: solid;
     border-right-width: 1px;
-    border-image: linear-gradient(to top, transparent 0%, gray 40%, gray 60%, transparent 100%);
+    border-image: linear-gradient(to top, transparent 0%, gray 20%, lightgray 80%, transparent 100%);
 	border-image-slice: 1;
-	color: gray;
 }
 
 .dialogs_messages {
-	padding: 2%;
+	margin-right: 1em;
+	padding: 0 1em 1em 1em;
 }
 
 .dialogs_messages_add {
-	padding-top: 2%;
+	padding-top: 1em;
 	clear: both;
+	text-align: left;
+}
+
+.dialogs_messages_add textarea {
+	width: 90%;
+	padding: 1em;
+	background-color:  #f7f9f9;
+	border: none;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.dialogs_messages_add button {
+	background-color: white;
+	border: none;
+	padding: 1em;
+	color: gray;
+	font-size: 0.65em;
+	cursor: pointer;
+}
+
+.dialogs_messages_add button:hover {
+	background-color:  #f0f3f4;
+	color: #2980b9;
+}
+
+.dialogs_messages_add button span {
+	background-color: inherit;
+}
+
+.dialogs_messages_add button span:first-child {
+	padding: 0 0 10px 0;
 }
 
 .dialogs_messages_add div:last-child {
-	padding-top: 1%;
+	padding-top: 1em;
 }

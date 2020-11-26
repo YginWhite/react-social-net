@@ -1,19 +1,19 @@
-.dialoItem {
+.dialogItem {
 	border-bottom: 1px solid lightgray;
-	font-size: 1.3vw;
+	font-size: 1em;
 }
 
-.dialoItem:hover {
-	background: linear-gradient(to right, transparent 0%, #f2f3f4 40%, #f2f3f4 60%, transparent 100%);
+.dialogItem:hover {
+	background: #f0f3f4;
 }
 
-.dialoItem:last-child {
+.dialogItem:last-child {
 	border-bottom: none;
 }
 
-.dialoItem a {
+.dialogItem a {
 	display: block;
-	padding: 10%;
+	padding: 1em;
 	text-decoration: none;
 	color: gray;
 	outline: none;
