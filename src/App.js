@@ -11,6 +11,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import Login from './components/Login/Login';
 
 // import './App.css';
 // import HeaderContainer from './components/Header/HeaderContainer';
@@ -31,7 +32,7 @@ const App = (props) => {
 
 				<div id="main">
 					<div id="banner">
-						<img src={pict01} alt="banner" class="image-full" />
+						<img src={pict01} alt="banner" className="image-full" />
 					</div>
 
 
@@ -41,6 +42,7 @@ const App = (props) => {
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} />
+					<Route path='/login' component={Login} />
 
 					
 					<div id="copyright">
@@ -49,35 +51,6 @@ const App = (props) => {
 					</div>
 				</div>
 			</div>
-			{/*
-
-				<div className="appContainer">
-					<div className="appContainer-header">
-						<HeaderContainer />
-					</div>
-					<div className="appContainer-main">
-						<Route path='/dialogs'
-							   render={() => <DialogsContainer />} />
-
-						<Route path='/profile/:userId?'
-							   render={() => <ProfileContainer />} />
-
-						<Route path='/news' component={News} />
-						<Route path='/music' component={Music} />
-						<Route path='/settings' component={Settings} />
-
-						<Route path='/users' render={() => <UsersContainer />} />
-
-						<Route path='/login' component={Login} />
-					</div>
-					<div className="appContainer-aside">
-						<Navbar />
-					</div>
-				</div>
-
-
-			*/}
-			
 		</BrowserRouter>
 	);
 }

@@ -8,9 +8,19 @@ const Login = (props) => {
 	}
 
 	return (
-		<div className={styles.loginCont}>
-			<h1>Login</h1>
-			<LoginReduxForm onSubmit={onSubmit}/>
+		
+
+		<div id="featured">
+			<div className="title">
+				<h2>Login</h2>
+				<div className="byline">
+					<span>Type your login data:</span>
+				</div>
+			</div>
+
+			<div className={styles.loginCont}>
+				<LoginReduxForm onSubmit={onSubmit}/>
+			</div>
 		</div>
 	);
 };
