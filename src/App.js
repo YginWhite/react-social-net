@@ -3,6 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import './styles/default.css';
 import './styles/fonts.css';
 import pict01 from './images/pic01.jpg';
+import pict03 from './images/pic03.jpg';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -12,6 +13,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
+import Banner from './components/Banner/Banner'
 
 
 const App = (props) => {
@@ -21,10 +23,7 @@ const App = (props) => {
 				<HeaderContainer />
 
 				<div id="main">
-					<div id="banner">
-						<img src={pict01} alt="banner" className="image-full" />
-					</div>
-
+					<Banner />
 
 					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
