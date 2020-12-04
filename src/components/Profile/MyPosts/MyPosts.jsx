@@ -3,6 +3,7 @@ import style from './MyPosts.module.css';
 import Post from './Post/Post';
 import {reduxForm, Field} from 'redux-form';
 import {required, maxLength} from './../../../utils/validators';
+import { TextareaInput } from './../../common/FormControls/FormControls';
 
 const MyPosts = (props) => {
 	let posts =  props.posts.map(({id, like, message}, ind) => <Post key={id} like={like} message={message} ind={ind}/>);
@@ -28,13 +29,13 @@ const MyPosts = (props) => {
 	);
 };
 
-const maxLength20 = maxLength(20);
+const maxLength200 = maxLength(200);
 let PostForm = (props) => {
 	return (
 		<form onSubmit={props.handleSubmit} className={style.posts_form}>
 			<div>
-				<Field name="newPost" component="textarea" placeholder="write new post..." rows="6"
-				       validate={[required, maxLength20]} />
+				<Field name="newPost" component={TextareaInput} placeholder="write new post..." rows="6"
+				       validate={[required, maxLength200]} />
 			</div>
 			<div>
 				<button className="button">

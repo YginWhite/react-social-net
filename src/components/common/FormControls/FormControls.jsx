@@ -20,3 +20,11 @@ export const TextInput = (props) => {
 		</FormControl>
 	);
 };
+
+export const TextareaInput = (props) => {
+	return (
+		<FormControl {...props}>
+			<textarea {...props} {...props.input} />
+		</FormControl>
+	);
+};
