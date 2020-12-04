@@ -18,7 +18,7 @@ const Login = (props) => {
 				</div>
 			</div>
 
-			<div className={styles.loginCont}>
+			<div className={styles.login}>
 				<LoginReduxForm onSubmit={onSubmit}/>
 			</div>
 		</div>
@@ -29,7 +29,7 @@ const maxLength15 = maxLength(15);
 
 const LoginForm = (props) => {
 	return (
-		<form onSubmit={props.handleSubmit} className={styles.loginForm}>
+		<form onSubmit={props.handleSubmit} className={styles.login_form}>
 			<div>
 				<Field type="text" name="login" placeholder="Login" 
 					component={TextInput} validate={[required, maxLength15]} />

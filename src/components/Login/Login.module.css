@@ -1,17 +1,24 @@
-.loginCont {
-	width: 40%;
+.login {
+	width: 50%;
 	margin: 5% auto;
-	padding: 3%;
+	padding: 1em;
 	border: 1px solid lightgray;
 	border-radius: 7px;
-	font-size: 1.3vw;
+	font-size: 1em;
 }
 
-.loginCont h1 {
-	text-align: center;
-	font-size: 1.3vw;
+.login_form > div {
+	padding-top: 1.5em;
 }
 
-.loginForm div {
-	padding-top: 5%;
+.login_form input {
+	padding: 1em;
+	outline: none;
+	border: none;
+	background-color: #f7f9f9;
+}
+
+.login_form span {
+	font-size: 0.8em;
+	color: red;
 }
