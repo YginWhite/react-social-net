@@ -3,10 +3,14 @@ import styles from './Login.module.css';
 import {reduxForm, Field} from 'redux-form';
 import { TextInput } from './../common/FormControls/FormControls';
 import { required, maxLength } from './../../utils/validators';
+import { connect } from 'react-redux';
+import { login } from './../../redux/authReducer';
 
 const Login = (props) => {
 	const onSubmit = (formData) => {
-		console.log(formData);
+		const { login, password } = formData;
+		console.log(login, password);
+		//props.login(login, password);
 	}
 
 	return (
@@ -25,18 +29,18 @@ const Login = (props) => {
 	);
 };
 
-const maxLength15 = maxLength(15);
+const maxLength25 = maxLength(25);
 
 const LoginForm = (props) => {
 	return (
 		<form onSubmit={props.handleSubmit} className={styles.login_form}>
 			<div>
 				<Field type="text" name="login" placeholder="Login" 
-					component={TextInput} validate={[required, maxLength15]} />
+					component={TextInput} validate={[required, maxLength25]} />
 			</div>
 			<div>
 				<Field type="text" name="password" placeholder="Password"
-					component={TextInput} validate={[required, maxLength15]} />
+					component={TextInput} validate={[required, maxLength25]} />
 			</div>
 			<div>
 				<Field type="checkbox" name="rememberMe" component="input"/>Remember me
@@ -50,4 +54,4 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
 
-export default Login;
+export default connect(null, { login })(Login);

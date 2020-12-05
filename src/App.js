@@ -13,7 +13,9 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
-import Banner from './components/Banner/Banner'
+import Banner from './components/Banner/Banner';
+
+import {Redirect} from 'react-router-dom';
 
 
 const App = (props) => {
@@ -25,6 +27,7 @@ const App = (props) => {
 				<div id="main">
 					<Banner />
 
+					<Route path='/' render={() => <ProfileContainer />} />
 					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
 					<Route path='/dialogs' render={() => <DialogsContainer />} />
