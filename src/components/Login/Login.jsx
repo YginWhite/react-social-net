@@ -10,7 +10,7 @@ const Login = (props) => {
 	const onSubmit = (formData) => {
 		const { login, password } = formData;
 		console.log(login, password);
-		//props.login(login, password);
+		props.login(login, password);
 	}
 
 	return (

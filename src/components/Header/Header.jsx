@@ -13,9 +13,14 @@ const Header = (props) => {
 				<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
 
 				{props.isAuth
-					? 	<div className={style.header_login}>{`login: ${props.login}`}</div>
+					? 	<div className={style.header_login}>
+							{`login: ${props.login}`}
+							<br />
+							<button onClick={ e => props.logout() }>Logout</button>
+						</div>
+
 					: 	<div className="">
-							<NavLink to='/login'>Login</NavLink>
+							{/*<NavLink to='/login'>Login</NavLink>*/}
 						</div>}
 			</div>
 

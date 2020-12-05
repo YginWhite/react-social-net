@@ -43,9 +43,21 @@ export const login = (email, password, rememberMe=false) => {
 	return (dispatch) => {
 		authAPI.login(email, password, rememberMe)
 			.then(data => {
-				console.log(data, 'from thunk');
+				console.log(data, 'from login');
 				if (data.resultCode === 0) {
 					dispatch( getAuthUserData() );
+				}
+			});
+	};
+};
+
+export const logout = () => {
+	return (dispatch) => {
+		authAPI.logout()
+			.then(data => {
+				console.log(data, 'from logout');
+				if (data.resultCode === 0) {
+					dispatch( setUserAuthData(null, null, null, false) );
 				}
 			});
 	};
