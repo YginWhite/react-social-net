@@ -15,6 +15,8 @@ import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
 import Banner from './components/Banner/Banner';
 
+import { Redirect } from 'react-router-dom';
+
 
 const App = (props) => {
 	return (
@@ -25,6 +27,9 @@ const App = (props) => {
 				<div id="main">
 					<Banner />
 
+					<Route exact path="/">
+            			<Redirect to='/login' />
+          			</Route>
 					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
 					<Route path='/dialogs' render={() => <DialogsContainer />} />
