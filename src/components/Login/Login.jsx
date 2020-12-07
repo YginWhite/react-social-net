@@ -48,6 +48,10 @@ const LoginForm = (props) => {
 			<div>
 				<Field type="checkbox" name="rememberMe" component="input"/>Remember me
 			</div>
+			{props.error &&
+			 	<div className={styles.common_error}>
+					{props.error}
+				</div>}
 			<div>
 				<button>Login</button>
 			</div>

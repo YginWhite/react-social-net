@@ -22,3 +22,9 @@
 	font-size: 0.8em;
 	color: red;
 }
+
+div.common_error {
+	padding: 1em;
+	border: 1px solid red;
+	color: red;
+}
