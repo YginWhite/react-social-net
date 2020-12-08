@@ -16,20 +16,29 @@ import Login from './components/Login/Login';
 import Banner from './components/Banner/Banner';
 
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { initializeApp } from './redux/appReducer';
+import Preloader from './components/common/Preloader/Preloader';
 
+class App extends React.Component {
+	componentDidMount() {
+		this.props.initializeApp();
+	}
 
-const App = (props) => {
-	return (
-		<BrowserRouter>
+	render() {
+		if (!this.props.isInitialized) {
+			return <div className="container"><Preloader /></div>;
+		}
+
+		return (
 			<div id="page" className="container">
 				<HeaderContainer />
 
 				<div id="main">
 					<Banner />
 
-					<Route exact path="/">
-            			<Redirect to='/login' />
-          			</Route>
 					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
 					<Route path='/dialogs' render={() => <DialogsContainer />} />
@@ -45,8 +54,16 @@ const App = (props) => {
 					</div>
 				</div>
 			</div>
-		</BrowserRouter>
-	);
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	isInitialized: state.app.isInitialized
+});
+
+export default compose(
+	withRouter,
+	connect(mapStateToProps, { initializeApp })
+)(App)
+
