@@ -1,41 +1,37 @@
 import React from 'react';
 import style from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-let prevClickedItem = null;
-const handleClick = (e) => {
-	const elem = e.target.parentNode;
-	elem.classList.add('current_page_item');
-	if (prevClickedItem) prevClickedItem.classList.remove('current_page_item');
-	prevClickedItem = elem;
-};
 
-const Navbar = () => {
+const Paths = {
+	Profile: '/profile',
+	Users: '/users',
+	Messages: '/dialogs',
+	News: '/news',
+	Music: '/music',
+	Settings: '/settings'
+}
+
+const Navbar = (props) => {
+	const pathname = props.location.pathname;
 	return (
-		<div id="menu" onClick={handleClick}>
+		<div id="menu">
 			<ul className={style.menu}>
-				<li>
-					<NavLink to='/profile'>Profile</NavLink>
-				</li>
-				<li>
-					<NavLink to='/users'>Users</NavLink>
-				</li>
-				<li>
-					<NavLink to='/dialogs'>Messages</NavLink>
-				</li>
-				<li>
-					<NavLink to='/news'>News</NavLink>
-				</li>
-				<li>
-					<NavLink to='/music'>Music</NavLink>
-				</li>
-				<li>
-					<NavLink to='/settings'>Settings</NavLink>
-				</li>
+				{Object.entries(Paths).map(([key, value], ind) => {
+					return (
+						<li 
+							key={ind}
+							className={ pathname.includes(value) ? 'current_page_item' : '' }
+						>
+							<NavLink to={value}>{key}</NavLink>
+						</li>
+					);
+				})}
 			</ul>
 		</div>
 	);
 }
 
 
-export default Navbar;
+export default withRouter(Navbar);
