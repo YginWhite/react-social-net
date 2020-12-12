@@ -65,14 +65,14 @@ const ProfileInfo = (props) => {
 			</div>
 
 			<div className={style.profile_contacts}>
-				{console.log(props.profile.contacts)}
+				{/*console.log(props.profile.contacts)*/}
 				<p><span>Contacts:</span></p>
 				<ul className="actions">
 					{
 						Object.entries(props.profile.contacts).map(([contact, link], ind) => {
 							return (
 								<li key={ind} className={style.profile_contact}>
-									<a href={link ? link : '#'} class="button">
+									<a href={link ? link : '#'} className="button">
 										<span className={`fa fa-${iconsName[contact]}`}></span>
 										<span>{contact}</span>
 									</a>

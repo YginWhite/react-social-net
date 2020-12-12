@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './Header.module.css';
-import {NavLink} from 'react-router-dom';
 import pict02 from './../../images/pic02.jpg';
 import Navbar from './../Navbar/Navbar'
 

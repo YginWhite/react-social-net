@@ -22,7 +22,7 @@ const MyPosts = (props) => {
 				</div>
 			</div>
 
-			<ul class="style1">
+			<ul className="style1">
 				{posts}
 			</ul>
 		</div>

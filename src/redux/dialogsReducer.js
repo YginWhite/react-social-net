@@ -18,7 +18,6 @@ const initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
 	const { type } = action;
-	let stateCopy;
 
 	switch(type) {
 		case ADD_MESSAGE:

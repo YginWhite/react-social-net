@@ -1,9 +1,7 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './styles/default.css';
 import './styles/fonts.css';
-import pict01 from './images/pic01.jpg';
-import pict03 from './images/pic03.jpg';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -15,7 +13,6 @@ import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
 import Banner from './components/Banner/Banner';
 
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
