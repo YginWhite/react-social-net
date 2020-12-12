@@ -14,7 +14,8 @@ const Login = (props) => {
 		props.login(login, password, rememberMe);
 	}
 
-	if (props.isAuth) return <Redirect to='/profile' />
+	if (props.isAuth) return <Redirect to={props.location.state.referrer} />
+	//if (props.isAuth) return <Redirect to='/profile' />
 
 	return (
 		<div id="featured">
