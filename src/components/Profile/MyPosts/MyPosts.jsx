@@ -5,7 +5,7 @@ import {reduxForm, Field} from 'redux-form';
 import {required, maxLength} from './../../../utils/validators';
 import { TextareaInput } from './../../common/FormControls/FormControls';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 	let posts =  props.posts.map(({id, like, message}, ind) => <Post key={id} like={like} message={message} ind={ind}/>);
 
 	const onAddPost = (formData) => {
@@ -27,7 +27,7 @@ const MyPosts = (props) => {
 			</ul>
 		</div>
 	);
-};
+});
 
 const maxLength200 = maxLength(200);
 let PostForm = (props) => {
