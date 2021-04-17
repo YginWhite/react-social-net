@@ -1,0 +1,10 @@
+.preloader {
+	width: 30%;
+	margin: 0 auto;
+	margin-top: 10%;
+	opacity: 0.5;
+}
+
+.preloader img {
+	width: 100%;
+}
