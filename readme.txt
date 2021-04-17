@@ -1,1 +1,0 @@
-Educational project - a social network.
