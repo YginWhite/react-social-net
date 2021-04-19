@@ -10,13 +10,13 @@ import { initializeApp } from 'redux/appReducer';
 
 class App extends React.Component {
 	componentDidMount() {
-		this.props.initializeApp();
+		//this.props.initializeApp();
 	}
 
 	render() {
-		if (!this.props.isInitialized) {
-			return <div className="container"><Preloader /></div>;
-		}
+		// if (!this.props.isInitialized) {
+		// 	return <div className="container"><Preloader /></div>;
+		// }
 
 		return (
 			<Switch>
