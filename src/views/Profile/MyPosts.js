@@ -8,6 +8,10 @@ import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import CardFooter from "components/Card/CardFooter.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
+import InputLabel from "@material-ui/core/InputLabel";
+import Button from "components/CustomButtons/Button.js";
 
 const posts = [
 	{id: '1', like: '5', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste aliquid, accusantium aliquam fugiat voluptates nihil natus ipsam, voluptate qui esse fuga corrupti quas unde a, possimus eum! Molestias, saepe, tempore.'},
@@ -64,35 +68,77 @@ const styles = {
       fontWeight: "400",
       lineHeight: "1"
     }
+  },
+  addPostBtn: {
+  	color: 'gray',
+  	backgroundColor: '#f2f3f4'
   }
 };
 
 const useStyles = makeStyles(styles);
+
+const PostForm = () => {
+	const classes = useStyles();
+
+	return (
+		<GridContainer justify="center">
+			<GridItem xs={12} sm={12} md={9}>
+				<Card>
+					<CardBody>
+						<GridContainer>
+							<GridItem xs={12} sm={12} md={12}>
+								<InputLabel style={{ color: "#AAAAAA" }}>Create new Post</InputLabel>
+								<CustomInput
+								  labelText="post text goes here"
+								  id="newPost"
+								  formControlProps={{
+								    fullWidth: true
+								  }}
+								  inputProps={{
+								    multiline: true,
+								    rows: 5
+								  }}
+								/>
+							</GridItem>
+						</GridContainer>	
+					</CardBody>
+					<CardFooter>
+					  <Button className={classes.addPostBtn}>Add Post</Button>
+					</CardFooter>
+				</Card>
+			</GridItem>
+		</GridContainer>
+	);
+};
 
 const MyPosts = () => {
 	const postsData = preparePostsData(posts);
 	const classes = useStyles();
 
 	return (
-		<GridContainer>
-		  <GridItem xs={12} sm={12} md={12}>
-		    <Card>
-		      <CardHeader color="primary">
-		        <h4 className={classes.cardTitleWhite}>Posts</h4>
-		        <p className={classes.cardCategoryWhite}>
-		          My posts
-		        </p>
-		      </CardHeader>
-		      <CardBody>
-		        <Table
-		          tableHeaderColor="primary"
-		          tableHead={postsData.tableHead}
-		          tableData={postsData.tableData}
-		        />
-		      </CardBody>
-		    </Card>
-		  </GridItem>
-		</GridContainer>
+		<div>
+			<PostForm/>
+
+			<GridContainer>
+			  <GridItem xs={12} sm={12} md={12}>
+			    <Card>
+			      <CardHeader color="primary">
+			        <h4 className={classes.cardTitleWhite}>Posts</h4>
+			        <p className={classes.cardCategoryWhite}>
+			          My posts
+			        </p>
+			      </CardHeader>
+			      <CardBody>
+			        <Table
+			          tableHeaderColor="primary"
+			          tableHead={postsData.tableHead}
+			          tableData={postsData.tableData}
+			        />
+			      </CardBody>
+			    </Card>
+			  </GridItem>
+			</GridContainer>
+		</div>
 	);
 };
 
