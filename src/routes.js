@@ -28,8 +28,19 @@ import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
 import NotificationsPage from "views/Notifications/Notifications.js";
 
+import ProfileContainer from 'views/Profile/Container';
+
 
 const dashboardRoutes = [
+  {
+    path: "/profile",
+    name: "Profile",
+    icon: Person,
+    component: ProfileContainer,
+    layout: ""
+  },
+
+
   {
     path: "/dashboard",
     name: "Dashboard",
