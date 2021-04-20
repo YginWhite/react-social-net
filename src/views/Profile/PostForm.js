@@ -9,19 +9,15 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "components/CustomButtons/Button.js";
+
+import { postValidator } from './validators';
+
+
 import { styles } from './styles';
 
 
 const useStyles = makeStyles(styles);
 
-const validate = values => {
-	const errors = {};
-  if (!values.newPost) {
-    errors.newPost = 'Required';
-  }
-  
-  return errors;
-}						
 									
 
 const PostForm = () => {
@@ -30,7 +26,7 @@ const PostForm = () => {
 	return (
 		<Form
 			onSubmit={values => console.log(values)}
-			validate={validate}
+			validate={postValidator}
 			render={(props) => (
 				<form onSubmit={props.handleSubmit}>
 					<Card>
