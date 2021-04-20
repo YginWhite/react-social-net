@@ -13,6 +13,8 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "components/CustomButtons/Button.js";
 
+import { Form, Field } from 'react-final-form';
+
 const posts = [
 	{id: '1', like: '5', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste aliquid, accusantium aliquam fugiat voluptates nihil natus ipsam, voluptate qui esse fuga corrupti quas unde a, possimus eum! Molestias, saepe, tempore.'},
 	{id: '2', like: '15', message: 'what is that?'},
@@ -77,37 +79,65 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
+
+const validate = values => {
+	const errors = {};
+  if (!values.newPost) {
+    errors.newPost = 'Required';
+  }
+  
+  return errors;
+}						
+									
+
 const PostForm = () => {
 	const classes = useStyles();
 
 	return (
-		<GridContainer justify="center">
-			<GridItem xs={12} sm={12} md={9}>
-				<Card>
-					<CardBody>
-						<GridContainer>
-							<GridItem xs={12} sm={12} md={12}>
-								<InputLabel style={{ color: "#AAAAAA" }}>Create new Post</InputLabel>
-								<CustomInput
-								  labelText="post text goes here"
-								  id="newPost"
-								  formControlProps={{
-								    fullWidth: true
-								  }}
-								  inputProps={{
-								    multiline: true,
-								    rows: 5
-								  }}
-								/>
-							</GridItem>
-						</GridContainer>	
-					</CardBody>
-					<CardFooter>
-					  <Button className={classes.addPostBtn}>Add Post</Button>
-					</CardFooter>
-				</Card>
-			</GridItem>
-		</GridContainer>
+		<Form
+			onSubmit={values => console.log(values)}
+			validate={validate}
+			render={(props) => (
+				<form onSubmit={props.handleSubmit}>
+					<Card>
+						<CardBody>
+							<Field
+			          name="newPost"
+			          render={({ input, meta }) => (
+			            <div>
+			              <InputLabel style={{ color: "#AAAAAA" }}>Create new Post</InputLabel>
+			              <CustomInput
+			                labelText={meta.touched && meta.error || "post text goes here"}
+			                id="newPost"
+			                name="newPost"
+			                formControlProps={{
+			                  fullWidth: true
+			                }}
+			                inputProps={{
+			                  multiline: true,
+			                  rows: 5,
+			                  ...input
+			                }}
+			                success={meta.touched && !meta.error}
+			                error={meta.touched && !!meta.error}
+			              />
+			            </div>
+			          )}
+			        />
+						</CardBody>
+						<CardFooter>
+							<Button 
+								type="submit" 
+								className={classes.addPostBtn}
+								disabled={props.hasValidationErrors}
+							>
+								Add Post
+							</Button>
+						</CardFooter>
+					</Card>
+				</form>
+			)}
+		/>
 	);
 };
 
@@ -117,7 +147,11 @@ const MyPosts = () => {
 
 	return (
 		<div>
-			<PostForm/>
+			<GridContainer justify="center">
+				<GridItem xs={12} sm={12} md={9}>
+					<PostForm/>
+				</GridItem>
+			</GridContainer>
 
 			<GridContainer>
 			  <GridItem xs={12} sm={12} md={12}>
