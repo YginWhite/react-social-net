@@ -8,12 +8,11 @@ import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import InputLabel from "@material-ui/core/InputLabel";
-import Button from "components/CustomButtons/Button.js";
 
-import { Form, Field } from 'react-final-form';
+
+import PostForm from './PostForm';
+
+
 
 const posts = [
 	{id: '1', like: '5', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste aliquid, accusantium aliquam fugiat voluptates nihil natus ipsam, voluptate qui esse fuga corrupti quas unde a, possimus eum! Molestias, saepe, tempore.'},
@@ -70,76 +69,11 @@ const styles = {
       fontWeight: "400",
       lineHeight: "1"
     }
-  },
-  addPostBtn: {
-  	color: 'gray',
-  	backgroundColor: '#f2f3f4'
   }
 };
 
 const useStyles = makeStyles(styles);
-
-
-const validate = values => {
-	const errors = {};
-  if (!values.newPost) {
-    errors.newPost = 'Required';
-  }
-  
-  return errors;
-}						
-									
-
-const PostForm = () => {
-	const classes = useStyles();
-
-	return (
-		<Form
-			onSubmit={values => console.log(values)}
-			validate={validate}
-			render={(props) => (
-				<form onSubmit={props.handleSubmit}>
-					<Card>
-						<CardBody>
-							<Field
-			          name="newPost"
-			          render={({ input, meta }) => (
-			            <div>
-			              <InputLabel style={{ color: "#AAAAAA" }}>Create new Post</InputLabel>
-			              <CustomInput
-			                labelText={meta.touched && meta.error || "post text goes here"}
-			                id="newPost"
-			                name="newPost"
-			                formControlProps={{
-			                  fullWidth: true
-			                }}
-			                inputProps={{
-			                  multiline: true,
-			                  rows: 5,
-			                  ...input
-			                }}
-			                success={meta.touched && !meta.error}
-			                error={meta.touched && !!meta.error}
-			              />
-			            </div>
-			          )}
-			        />
-						</CardBody>
-						<CardFooter>
-							<Button 
-								type="submit" 
-								className={classes.addPostBtn}
-								disabled={props.hasValidationErrors}
-							>
-								Add Post
-							</Button>
-						</CardFooter>
-					</Card>
-				</form>
-			)}
-		/>
-	);
-};
+													
 
 const MyPosts = () => {
 	const postsData = preparePostsData(posts);
