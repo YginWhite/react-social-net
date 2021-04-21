@@ -18,6 +18,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import CheckboxInput from '../../custom/Checkbox';
 import { styles } from './styles';
+import { loginValidator } from './validators';
+
+
 
 const useStyles = makeStyles(styles);
 
@@ -35,8 +38,14 @@ const Login = () => {
 
 					<Form
 						onSubmit={values => console.log(values)}
-						render={(props) => (
-							<form onSubmit={props.handleSubmit}>
+						validate={loginValidator}
+						render={({ handleSubmit, form, submitting, pristine, values, ...rest }) => (
+							<form onSubmit={(e) => {
+								e.preventDefault();
+								handleSubmit();
+								//form.reset();
+								//console.log(submitting, pristine, values, rest);
+							}}>
 								<CardBody>
 									<GridContainer>
 
@@ -95,7 +104,7 @@ const Login = () => {
 									</GridContainer>
 								</CardBody>
 								<CardFooter>
-									<Button type="submit" color="primary">Login</Button>
+									<Button type="submit" disabled={rest.hasValidationErrors} color="primary">Login</Button>
 								</CardFooter>
 							</form>
 						)}
