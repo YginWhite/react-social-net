@@ -29,6 +29,8 @@ import Typography from "views/Typography/Typography.js";
 import NotificationsPage from "views/Notifications/Notifications.js";
 
 import ProfileContainer from 'views/Profile/Container';
+import Login from './views/Login/Login';
+
 
 
 const dashboardRoutes = [
@@ -37,6 +39,14 @@ const dashboardRoutes = [
     name: "Profile",
     icon: Person,
     component: ProfileContainer,
+    layout: ""
+  },
+
+  {
+    path: "/login",
+    name: "Login",
+    icon: Person,
+    component: Login,
     layout: ""
   },
 
