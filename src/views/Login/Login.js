@@ -16,32 +16,13 @@ import CardIcon from "components/Card/CardIcon.js";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-
 import CheckboxInput from '../../custom/Checkbox';
+import { styles } from './styles';
 
-
-
-
-const customStyles = {
-  header: {
-  	display: 'flex',
-  	justifyContent: 'center'
-  },
-  checkboxLabel: {
-  	paddingTop: '20px'
-  },
-  labelFontSize: {
-  	fontSize: '12px'
-  }
-};
-
-const useStyles = makeStyles(customStyles);
-
-
+const useStyles = makeStyles(styles);
 
 const Login = () => {
 	const classes = useStyles();
-
 	return (
 		<GridContainer justify="center">
 			<GridItem xs={12} sm={12} md={6}>
@@ -111,7 +92,6 @@ const Login = () => {
 											/>
 										</GridItem>
 
-									
 									</GridContainer>
 								</CardBody>
 								<CardFooter>
@@ -120,7 +100,6 @@ const Login = () => {
 							</form>
 						)}
 					/>
-
 				</Card>
 			</GridItem>
 		</GridContainer>
