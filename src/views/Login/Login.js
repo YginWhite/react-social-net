@@ -15,10 +15,12 @@ import CardIcon from "components/Card/CardIcon.js";
 
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from "@material-ui/core/Checkbox";
-import Check from "@material-ui/icons/Check";
 
-import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
+
+import CheckboxInput from '../../custom/Checkbox';
+
+
+
 
 const customStyles = {
   header: {
@@ -33,24 +35,9 @@ const customStyles = {
   }
 };
 
-const useStyles = makeStyles({...styles, ...customStyles});
+const useStyles = makeStyles(customStyles);
 
-const CheckboxInp = (input) => {
-	const classes = useStyles();
-	return (
-		<Checkbox
-			inputProps={{ ...input }}
-			name="remember"
-		  checkedIcon={<Check className={classes.checkedIcon} />}
-		  icon={<Check className={classes.uncheckedIcon} />}
-		  classes={{
-		    checked: classes.checked,
-		    root: classes.root
-		  }}
-		  checked={input.checked}
-		/>
-	);
-};
+
 
 const Login = () => {
 	const classes = useStyles();
@@ -117,7 +104,7 @@ const Login = () => {
 												render={({ input, meta }) => (
 													<FormControlLabel
 														className={classes.checkboxLabel}
-									          control={<CheckboxInp {...input} />}
+									          control={<CheckboxInput {...input} />}
 									          label={<span className={classes.labelFontSize}>Remember Me</span>}
 										      />
 												)}
