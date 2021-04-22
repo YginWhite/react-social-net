@@ -11,6 +11,7 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderMenu(props) {
 	const classes = useStyles();
+	console.log(props);
 	return (
 		<MenuList role="menu">
 		  <MenuItem

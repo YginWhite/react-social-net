@@ -18,6 +18,8 @@ import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 import HeaderMenu from '../../custom/HeaderMenu/HeaderMenu';
+import HeaderMenuContainer from '../../custom/HeaderMenu/Container';
+
 
 
 
@@ -107,7 +109,7 @@ export default function AdminNavbarLinks() {
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
   
-                  <HeaderMenu
+                  <HeaderMenuContainer
                     handleCloseProfile={handleCloseProfile}
                   />
 
