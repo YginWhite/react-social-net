@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -11,22 +12,42 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderMenu(props) {
 	const classes = useStyles();
-	console.log(props);
+	const { isAuth, logout, handleCloseProfile } = props;
+	
+	const handleLog = (e) => {
+		handleCloseProfile();
+		if (isAuth) logout();
+	};
+
 	return (
 		<MenuList role="menu">
-		  <MenuItem
-		    onClick={props.handleCloseProfile}
-		    className={classes.dropdownItem}
-		  >
-		    Profile
-		  </MenuItem>
+		  <NavLink to='/profile'>
+		  	<MenuItem
+		  		onClick={handleCloseProfile}
+		  		className={classes.dropdownItem}
+		  	>
+		  		Profile
+		  	</MenuItem>
+		  </NavLink>
 		  <Divider light />
-		  <MenuItem
-		    onClick={props.handleCloseProfile}
-		    className={classes.dropdownItem}
-		  >
-		    Logout
-		  </MenuItem>
+
+		  {isAuth
+		  	?	(	<MenuItem
+		  				onClick={handleLog}
+		  				className={classes.dropdownItem}
+		  			>
+		  				Logout
+		  			</MenuItem>	)
+
+		  	: (	<NavLink to='/login'>
+		  				<MenuItem
+		  					onClick={handleLog}
+		  					className={classes.dropdownItem}
+		  				>
+		  					Login
+		  				</MenuItem>		  	
+		  			</NavLink> )
+		  }
 		</MenuList>
 	);
 }

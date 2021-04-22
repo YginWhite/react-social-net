@@ -4,7 +4,7 @@ import HeaderMenu from './HeaderMenu';
 import { logout } from '../../redux/authReducer';
 
 const mapStateToProps = (state) => ({
-	isInitialized: state.auth.isAuth
+	isAuth: state.auth.isAuth
 });
 
 export default connect(mapStateToProps, { logout })(HeaderMenu);
