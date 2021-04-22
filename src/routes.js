@@ -29,7 +29,8 @@ import Typography from "views/Typography/Typography.js";
 import NotificationsPage from "views/Notifications/Notifications.js";
 
 import ProfileContainer from 'views/Profile/Container';
-import Login from './views/Login/Login';
+import LoginContainer from './views/Login/Container';
+
 
 
 
@@ -46,7 +47,7 @@ const dashboardRoutes = [
     path: "/login",
     name: "Login",
     icon: Person,
-    component: Login,
+    component: LoginContainer,
     layout: ""
   },
 

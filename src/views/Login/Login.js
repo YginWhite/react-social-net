@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,8 +25,12 @@ import { loginValidator } from './validators';
 
 const useStyles = makeStyles(styles);
 
-const Login = () => {
+const Login = (props) => {
 	const classes = useStyles();
+
+	// if (props.isAuth) return <Redirect to={props.location.state.referrer} />
+	// 
+
 	return (
 		<GridContainer justify="center">
 			<GridItem xs={12} sm={12} md={6}>
@@ -45,6 +50,7 @@ const Login = () => {
 								handleSubmit();
 								//form.reset();
 								//console.log(submitting, pristine, values, rest);
+								console.log(values, props);
 							}}>
 								<CardBody>
 									<GridContainer>
