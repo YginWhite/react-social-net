@@ -17,15 +17,17 @@ import CardIcon from "components/Card/CardIcon.js";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import Snackbar from "components/Snackbar/Snackbar.js";
+import AddAlert from "@material-ui/icons/AddAlert";
+
 import CheckboxInput from '../../custom/Checkbox';
 import { styles } from './styles';
 import { loginValidator } from './validators';
 
 
-
 const useStyles = makeStyles(styles);
 
-const Login = (props) => {
+const LoginForm = (props) => {
 	const classes = useStyles();
 
 	const fieldLabel = (meta, defaultText) => {
@@ -42,10 +44,9 @@ const Login = (props) => {
 		props.login(values.email, values.username, values.remember);
 	};
 
-
 	if (props.isAuth) return <Redirect to={props.location.state.referrer} /> 
 
-	return (
+	return (	
 		<GridContainer justify="center">
 			<GridItem xs={12} sm={12} md={6}>
 				<Card>
@@ -126,6 +127,30 @@ const Login = (props) => {
 			</GridItem>
 		</GridContainer>
 	);
+};
+
+const Login = (props) => {
+	const { serverError } = props;
+	const [open, setOpen] = React.useState(true);
+	
+	return (
+		<div>
+			<LoginForm {...props}/>
+
+			{!!serverError && 
+				<Snackbar
+	        place="tr"
+	        color="danger"
+	        icon={AddAlert}
+	        message={serverError}
+	        open={open}
+	        closeNotification={() => setOpen(false)}
+	        close
+				/>
+			}
+			
+		</div>
+	);			
 };
 
 export default Login;
