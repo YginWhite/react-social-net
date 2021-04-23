@@ -22,22 +22,19 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import WebIcon from '@material-ui/icons/Web';
 
 import avatar from "assets/img/faces/marc.jpg";
+import Preloader from '../../custom/Preloader/Preloader';
 
 
 
-const status = 'football is all and forevar!';
-const profile = {
-	aboutMe: `Don't be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...`,
-	contacts: { facebook:null, github:null, instagram:null, mainLink:null,
-							twitter:null, vk:null, website:null, youtube:null },
-	fullName: 'Barbarik',
-	lookingForAJob: true,
-	lookingForAJobDescription: 'good job',
-	photos: { small:null, large:null },
-	userId: 5854
-};
+const defaultInfo = {
+  aboutMe: `Don't be scared of the truth because we need to restart the
+            human foundation in truth And I love you like Kanye loves Kanye
+            I love Rick Owens’ bed design but the back is...`,
+  lookingForAJobDescription: `I am looking for a job that will reveal in me the potential 
+                              to make great achievements`,
+  status: 'There are many sayings in space ... ',
+  photo: avatar
+}
 
 
 const socialContacts = {
@@ -96,8 +93,12 @@ const Contacts = () => {
 	);
 }
 
-export default function Profile() {
+export default function Profile(props) {
+  const { profile, status } = props;
   const classes = useStyles();
+
+  if (!profile) return <Preloader/> 
+
   return (
     <div>
       <GridContainer justify="center">
@@ -106,16 +107,16 @@ export default function Profile() {
           <Card >
             <CardAvatar profile>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
+                <img src={profile.photos.large ? profile.photos.large : avatar} alt="..." />
               </a>
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
-              <h6 className={classes.textCenter}>{status}</h6>
+              <h6 className={classes.textCenter}>{status || 'No status'}</h6>
 
               <p>
                 <span className={classes.label}>About:</span>
-                <span>{profile.aboutMe}</span>
+                <span>{profile.aboutMe || 'No information'}</span>
               </p>
               <p>
                 <span className={classes.label}>Lookink for a job:</span>
@@ -123,7 +124,7 @@ export default function Profile() {
               </p>
               <p>
                 <span className={classes.label}>Lookink for a job description:</span>
-                <span>{profile.lookingForAJobDescription}</span>
+                <span>{profile.lookingForAJobDescription || 'No description'}</span>
               </p>
 
               <CardFooter chart>

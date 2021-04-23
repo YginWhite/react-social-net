@@ -13,15 +13,20 @@ import MyPosts from './MyPosts';
 
 class Container extends React.Component {
 	componentDidMount() {
-		//this.props.getProfile(5854);
-		//this.props.getStatus(5854);
+		const { authId } = this.props;
+
+		this.props.getProfile(authId);
+		this.props.getStatus(authId);
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div>
-				<Profile/>
+				<Profile 
+					profile={this.props.profile}
+					status={this.props.status}
+					changeStatus={this.props.changeStatus}
+				/>
 				<MyPosts/>
 			</div>
 		);
