@@ -2,24 +2,33 @@ import {authAPI} from './../api/api';
 import { stopSubmit } from 'redux-form';
 
 const SET_USER_DATA = 'SET-USER-DATA';
+const SET_SERVER_ERROR = 'SET_SERVER_ERROR';
 
 const initialState = {
 	userId: null,
 	email: null,
 	login: null,
-	isAuth: false
+	isAuth: false,
+	serverError: ''
 };
 
 const authReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case SET_USER_DATA:
 			return { ...state, ...action.data };
+		case SET_SERVER_ERROR:
+			return { ...state, serverError: action.errorText };
 		default:
 			return state;
 	}
 };
 
 export default authReducer;
+
+export const setServerError = (errorText) => ({
+	type: SET_SERVER_ERROR,
+	errorText
+});
 
 export const setUserAuthData = (userId, email, login, isAuth) => (
 	{
@@ -49,7 +58,7 @@ export const login = (email, password, rememberMe=false) => {
 					dispatch( getAuthUserData() );
 				} else {
 					let message = data.messages[0] || 'Some error';
-					dispatch( stopSubmit('login', {_error: message}) );
+					dispatch( setServerError(message) );
 				}
 			});
 	};

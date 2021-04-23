@@ -30,7 +30,7 @@ const switchRoutes = (
         />
       );
     })}
-    <Redirect from="/" to="/dashboard" />
+    <Redirect from="/" to="/profile" />
   </Switch>
 );
 

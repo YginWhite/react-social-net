@@ -28,8 +28,22 @@ const useStyles = makeStyles(styles);
 const Login = (props) => {
 	const classes = useStyles();
 
-	// if (props.isAuth) return <Redirect to={props.location.state.referrer} />
-	// 
+	const fieldLabel = (meta, defaultText) => {
+		return meta.touched && meta.error || defaultText;
+	};
+	const fieldSuccess = (meta) => {
+		return meta.touched && !meta.error;
+	};
+	const fieldError = (meta) => {
+		return meta.touched && !!meta.error;
+	};
+
+	const onSubmit = (values) => {
+		props.login(values.email, values.username, values.remember);
+	};
+
+
+	if (props.isAuth) return <Redirect to={props.location.state.referrer} /> 
 
 	return (
 		<GridContainer justify="center">
@@ -42,33 +56,26 @@ const Login = (props) => {
 					</CardHeader>
 
 					<Form
-						onSubmit={values => console.log(values)}
+						onSubmit={onSubmit}
 						validate={loginValidator}
-						render={({ handleSubmit, form, submitting, pristine, values, ...rest }) => (
-							<form onSubmit={(e) => {
-								e.preventDefault();
-								handleSubmit();
-								//form.reset();
-								//console.log(submitting, pristine, values, rest);
-								console.log(values, props);
-							}}>
+						render={({ handleSubmit, submitting, ...rest }) => (
+							<form onSubmit={handleSubmit}>
 								<CardBody>
 									<GridContainer>
-
 										<GridItem xs={12} sm={12} md={12}>
 											<Field
 												name="username"
 												render={({ input, meta }) => (
 													<CustomInput
-													  labelText={(meta.touched && meta.error || "Username")}
+													  labelText={fieldLabel(meta, 'Password')}
 													  id="username"
 													  name="username"
 													  formControlProps={{
 													    fullWidth: true
 													  }}
 													  inputProps={{ ...input }}
-													  success={meta.touched && !meta.error}
-													  error={meta.touched && !!meta.error}
+													  success={fieldSuccess(meta)}
+													  error={fieldError(meta)}
 													/>
 												)}
 											/>
@@ -79,15 +86,15 @@ const Login = (props) => {
 												name="email"
 												render={({ input, meta }) => (
 													<CustomInput
-													  labelText={(meta.touched && meta.error || "Email")}
+													  labelText={fieldLabel(meta, 'Email')}
 													  id="email"
 													  name="email"
 													  formControlProps={{
 													    fullWidth: true
 													  }}
 													  inputProps={{ ...input }}
-													  success={meta.touched && !meta.error}
-													  error={meta.touched && !!meta.error}
+													  success={fieldSuccess(meta)}
+													  error={fieldError(meta)}
 													/>
 												)}
 											/>

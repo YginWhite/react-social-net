@@ -10,7 +10,7 @@ import { initializeApp } from 'redux/appReducer';
 
 class App extends React.Component {
 	componentDidMount() {
-		//this.props.initializeApp();
+		this.props.initializeApp();
 	}
 
 	render() {
