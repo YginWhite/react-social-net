@@ -22,7 +22,10 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import WebIcon from '@material-ui/icons/Web';
 
 import avatar from "assets/img/faces/marc.jpg";
+
 import Preloader from '../../custom/Preloader/Preloader';
+import Status from './Status';
+
 
 
 
@@ -94,7 +97,7 @@ const Contacts = () => {
 }
 
 export default function Profile(props) {
-  const { profile, status } = props;
+  const { profile, status, changeStatus } = props;
   const classes = useStyles();
 
   if (!profile) return <Preloader/> 
@@ -112,7 +115,12 @@ export default function Profile(props) {
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
-              <h6 className={classes.textCenter}>{status || 'No status'}</h6>
+              {/*<h6 className={classes.textCenter}>{status || 'No status'}</h6>*/}
+              <Status 
+                status={status}
+                styles={classes.textCenter}
+                changeStatus={changeStatus}
+              />
 
               <p>
                 <span className={classes.label}>About:</span>
