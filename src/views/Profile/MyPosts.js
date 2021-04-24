@@ -9,20 +9,8 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-
 import PostForm from './PostForm';
 import { styles } from './styles';
-
-
-
-
-const posts = [
-	{id: '1', like: '5', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste aliquid, accusantium aliquam fugiat voluptates nihil natus ipsam, voluptate qui esse fuga corrupti quas unde a, possimus eum! Molestias, saepe, tempore.'},
-	{id: '2', like: '15', message: 'what is that?'},
-	{id: '3', like: '25', message: 'It is automatic fill when need some text'},
-	{id: '4', like: '3', message: 'Thanks, now and i know about it!'},
-	{id: '5', like: '10', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut sed explicabo similique! Consequuntur magnam, et nostrum id possimus hic quibusdam ipsum alias iusto, eos consequatur aut quasi suscipit eum porro.'}
-];
 
 const preparePostsData = (posts) => {
 	let tableHead = [];
@@ -45,8 +33,8 @@ const preparePostsData = (posts) => {
 
 const useStyles = makeStyles(styles);
 													
-
-const MyPosts = () => {
+const MyPosts = (props) => {
+	const { posts } = props;
 	const postsData = preparePostsData(posts);
 	const classes = useStyles();
 

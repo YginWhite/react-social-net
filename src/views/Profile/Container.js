@@ -27,7 +27,9 @@ class Container extends React.Component {
 					status={this.props.status}
 					changeStatus={this.props.changeStatus}
 				/>
-				<MyPosts/>
+				<MyPosts
+					posts={this.props.posts}
+				/>
 			</div>
 		);
 	}
@@ -38,7 +40,8 @@ const mapStateToProps = (state) => {
 		profile: state.profilePage.profile,
 		status: state.profilePage.status,
 		authId: state.auth.userId,
-		isAuth: state.auth.isAuth
+		isAuth: state.auth.isAuth,
+		posts: state.profilePage.posts
 	};
 };
 
