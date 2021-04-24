@@ -34,7 +34,7 @@ const preparePostsData = (posts) => {
 const useStyles = makeStyles(styles);
 													
 const MyPosts = (props) => {
-	const { posts } = props;
+	const { posts, addPost } = props;
 	const postsData = preparePostsData(posts);
 	const classes = useStyles();
 
@@ -42,7 +42,7 @@ const MyPosts = (props) => {
 		<div>
 			<GridContainer justify="center">
 				<GridItem xs={12} sm={12} md={9}>
-					<PostForm/>
+					<PostForm addPost={addPost}/>
 				</GridItem>
 			</GridContainer>
 

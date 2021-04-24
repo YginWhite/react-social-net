@@ -12,20 +12,18 @@ import Button from "components/CustomButtons/Button.js";
 
 import { postValidator } from './validators';
 
-
 import { styles } from './styles';
 
 
 const useStyles = makeStyles(styles);
-
 									
-
-const PostForm = () => {
+const PostForm = (props) => {
+	const { addPost } = props;
 	const classes = useStyles();
 
 	return (
 		<Form
-			onSubmit={values => console.log(values)}
+			onSubmit={values => addPost(values.newPost)}
 			validate={postValidator}
 			render={(props) => (
 				<form onSubmit={props.handleSubmit}>
@@ -35,9 +33,9 @@ const PostForm = () => {
 			          name="newPost"
 			          render={({ input, meta }) => (
 			            <div>
-			              <InputLabel style={{ color: "#AAAAAA" }}>Create new Post</InputLabel>
+			              <InputLabel style={{ color: "#AAAAAA" }}>Create new post</InputLabel>
 			              <CustomInput
-			                labelText={meta.touched && meta.error || "post text goes here"}
+			                labelText={meta.touched && meta.error || "input post text"}
 			                id="newPost"
 			                name="newPost"
 			                formControlProps={{
@@ -46,7 +44,7 @@ const PostForm = () => {
 			                inputProps={{
 			                  multiline: true,
 			                  rows: 5,
-			                  ...input
+			                  ...input,
 			                }}
 			                success={meta.touched && !meta.error}
 			                error={meta.touched && !!meta.error}
