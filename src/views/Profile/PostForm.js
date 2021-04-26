@@ -9,6 +9,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "components/CustomButtons/Button.js";
+import CardHeader from "components/Card/CardHeader.js";
 
 import { postValidator } from './validators';
 
@@ -28,12 +29,14 @@ const PostForm = (props) => {
 			render={(props) => (
 				<form onSubmit={props.handleSubmit}>
 					<Card>
+					  <CardHeader color="danger">
+              <h4 className={classes.cardTitle}>Create new Post</h4>
+					  </CardHeader>
 						<CardBody>
 							<Field
 			          name="newPost"
 			          render={({ input, meta }) => (
 			            <div>
-			              <InputLabel style={{ color: "#AAAAAA" }}>Create new post</InputLabel>
 			              <CustomInput
 			                labelText={meta.touched && meta.error || "input post text"}
 			                id="newPost"
