@@ -11,7 +11,7 @@ const initialState = {
 const setUsers = (users) => ({ type: SET_USERS, users });
 const setTotalCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
 
-export default function usersReducer(state, action) {
+export default function usersReducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USERS:
 			return { ...state, users: action.users };
