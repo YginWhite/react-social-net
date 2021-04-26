@@ -7,12 +7,13 @@ import GridContainer from "components/Grid/GridContainer.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+import Muted from "components/Typography/Muted.js";
+
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import Preloader from '../../custom/Preloader/Preloader';
-
-
 import avatar from "assets/img/faces/marc.jpg";
-
 import styles from "assets/jss/material-dashboard-react/cardImagesStyles.js";
 
 const useStyles = makeStyles(styles);
@@ -66,9 +67,15 @@ const Users = (props) => {
 
 	return (
 		<div>
-			<div>
-				Pagination
-			</div>
+			<GridContainer justify="center">
+				<GridItem xs={12} sm={12} md={6}>
+					<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+						<Button justIcon color="primary"><ArrowBackIosIcon /></Button>
+						<Muted>{`${currentPage} of ${totalUsers}`}</Muted>
+						<Button justIcon color="primary"><ArrowForwardIosIcon /></Button>
+					</div>
+				</GridItem>
+			</GridContainer>
 
 			<GridContainer justify="space-around">
 				{usersLoading && <Preloader/>}
@@ -79,7 +86,7 @@ const Users = (props) => {
 				        className={classes.cardImgTop}
 				        alt={user.name}
 				        style={{ width: "100%", display: "block" }}
-				        src={avatar}
+				        src={user.photos.large ? user.photos.large : avatar}
 				      />
 				      <CardBody>
 				        <h4>{user.name}</h4>
