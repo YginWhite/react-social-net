@@ -49,8 +49,8 @@ const testData = {
 const Users = (props) => {
 	const { users, totalUsers, getUsers } = props;
 
-	const [currentPage, setCurrentPage] = useState(1);
-	const [usersCount, setUsersCount] = useState(4);
+	const [currentPage, setCurrentPage] = useState(58);
+	const [usersCount, setUsersCount] = useState(3);
 	const [usersLoading, setUsersLoading] = useState(false);
 
 	useEffect(() => {
@@ -63,6 +63,17 @@ const Users = (props) => {
 		fetchUsers();
 	}, [currentPage, usersCount]);
 
+	const pageCount = Math.ceil(totalUsers / usersCount);
+
+	const paginateForward = () => {
+		if (currentPage === pageCount) return;
+		setCurrentPage(currentPage + 1);
+	};
+	const paginateBack = () => {
+		if (currentPage === 1) return;
+		setCurrentPage(currentPage - 1); 
+	}
+
 	const classes = useStyles();
 
 	return (
@@ -70,9 +81,13 @@ const Users = (props) => {
 			<GridContainer justify="center">
 				<GridItem xs={12} sm={12} md={6}>
 					<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-						<Button justIcon color="primary"><ArrowBackIosIcon /></Button>
-						<Muted>{`${currentPage} of ${totalUsers}`}</Muted>
-						<Button justIcon color="primary"><ArrowForwardIosIcon /></Button>
+						<Button justIcon color="primary" onClick={paginateBack}>
+							<ArrowBackIosIcon />
+						</Button>
+						<Muted>{`${currentPage} of ${pageCount}`}</Muted>
+						<Button justIcon color="primary" onClick={paginateForward}>
+							<ArrowForwardIosIcon />
+						</Button>
 					</div>
 				</GridItem>
 			</GridContainer>
@@ -80,7 +95,7 @@ const Users = (props) => {
 			<GridContainer justify="space-around">
 				{usersLoading && <Preloader/>}
 				{!usersLoading && users.map(user => (
-					<GridItem xs={12} sm={12} md={6} key={user.id}>
+					<GridItem xs={12} sm={12} md={4} key={user.id}>
 						<Card>
 				      <img
 				        className={classes.cardImgTop}
