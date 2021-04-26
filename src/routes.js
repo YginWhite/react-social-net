@@ -30,7 +30,9 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 
 import ProfileContainer from 'views/Profile/Container';
 import LoginContainer from './views/Login/Container';
-import Users from './views/Users/Users';
+import UsersContainer from './views/Users/Container';
+
+//import Users from './views/Users/Users';
 
 
 
@@ -49,7 +51,7 @@ const dashboardRoutes = [
     path: "/users",
     name: "Users",
     icon: Person,
-    component: Users,
+    component: UsersContainer,
     layout: ""
   },
 

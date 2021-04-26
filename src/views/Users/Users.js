@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
+
+import Preloader from '../../custom/Preloader/Preloader';
+
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -44,6 +46,22 @@ const testData = {
 
 
 const Users = (props) => {
+	const { users, totalUsers, getUsers } = props;
+
+	const [currentPage, setCurrentPage] = useState(1);
+	const [usersCount, setUsersCount] = useState(4);
+	const [usersLoading, setUsersLoading] = useState(false);
+
+	useEffect(() => {
+		const fetchUsers = async () => {
+			setUsersLoading(true);
+			await getUsers(currentPage, usersCount);
+			setUsersLoading(false);
+		}; 
+
+		fetchUsers();
+	}, [currentPage, usersCount]);
+
 	const classes = useStyles();
 
 	return (
@@ -53,7 +71,8 @@ const Users = (props) => {
 			</div>
 
 			<GridContainer justify="space-around">
-				{testData.items.map(user => (
+				{usersLoading && <Preloader/>}
+				{!usersLoading && users.map(user => (
 					<GridItem xs={12} sm={12} md={6} key={user.id}>
 						<Card>
 				      <img

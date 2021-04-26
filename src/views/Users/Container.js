@@ -7,13 +7,17 @@ import Users from './Users';
 
 class Container extends React.Component {
 	componentDidMount() {
-		console.log(this.props);
+		//console.log(this.props);
 	}
 
 	render() {
 		return (
 			<div>
-				<Users/>
+				<Users 
+					users={this.props.users}
+					totalUsers={this.props.totalUsers}
+					getUsers={this.props.getUsers}
+				/>
 			</div>
 		);
 	}

@@ -25,8 +25,8 @@ export default function usersReducer(state = initialState, action) {
 export const getUsers = (page, count) => (dispatch) => {
 	return usersAPI.getUsers(page, count)
 		.then(data => {
-			setUsers(data.items);
-			setTotalCount(data.totalCount);
+			dispatch( setUsers(data.items) );
+			dispatch( setTotalCount(data.totalCount) );
 		});
 };
 
