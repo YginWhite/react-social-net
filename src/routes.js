@@ -69,13 +69,13 @@ const dashboardRoutes = [
     component: DashboardPage,
     layout: ""
   },
-  {
-    path: "/user",
-    name: "User Profile",
-    icon: Person,
-    component: UserProfile,
-    layout: ""
-  },
+  // {
+  //   path: "/user",
+  //   name: "User Profile",
+  //   icon: Person,
+  //   component: UserProfile,
+  //   layout: ""
+  // },
   {
     path: "/table",
     name: "Table List",
