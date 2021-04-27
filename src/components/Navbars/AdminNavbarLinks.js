@@ -51,26 +51,28 @@ export default function AdminNavbarLinks() {
     setOpenProfile(null);
   };
 
+  const paths = window.location.pathname.split('/');
+
   return (
     <div>
-      <div className={classes.searchWrapper}>
-        <CustomInput
-          formControlProps={{
-            className: classes.margin + " " + classes.search
-          }}
-          inputProps={{
-            placeholder: "Search",
-            inputProps: {
-              "aria-label": "Search"
-            }
-          }}
-        />
-        <Button color="white" aria-label="edit" justIcon round>
-          <Search />
-        </Button>
-      </div>
-
-
+      {paths[1] === 'users' && 
+        <div className={classes.searchWrapper}>
+          <CustomInput
+            formControlProps={{
+              className: classes.margin + " " + classes.search
+            }}
+            inputProps={{
+              placeholder: "Search",
+              inputProps: {
+                "aria-label": "Search"
+              }
+            }}
+          />
+          <Button color="white" aria-label="edit" justIcon round>
+            <Search />
+          </Button>
+        </div>}
+      
       <div className={classes.manager}>
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
