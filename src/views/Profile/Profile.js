@@ -12,6 +12,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import FacebookIcon from "@material-ui/icons/Facebook";
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -63,26 +64,38 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
+
 const Contacts = ({ contacts }) => {
-	const classes = useStyles();
-	return (
-		<div className={classes.contactsContainer}>
-			{Object.entries(contacts).map(([name, src]) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.contactsContainer}>
+      {Object.entries(contacts).map(([name, src]) => {
         const contact = socialContacts[name];
-				return (
-					<Button justIcon round key={name}
-						color="white" 
-						href={src || contact.src} 
-						target="blank"
-						className={classes.contact}
-					>
-						<contact.icon/>
-					</Button>
-				);
-			})}
-		</div>
-	);
-}
+        const Contact = React.forwardRef(function Contact(props, ref) {
+          return (
+            <div {...props} ref={ref}>
+              <Button justIcon round key={name}
+                color="white" 
+                href={src || contact.src} 
+                target="blank"
+                className={classes.contact}
+              >
+                <contact.icon/>
+              </Button>
+            </div>
+          );
+        });
+
+        return (
+          <Tooltip title={name} arrow key={name}>
+            <Contact/>
+          </Tooltip>
+        );
+      })}
+    </div>
+  );
+};
+
 
 export default function Profile(props) {
   const { profile, status, changeStatus } = props;
