@@ -12,13 +12,16 @@ import MyPosts from './MyPosts';
 
 
 class Container extends React.Component {
+	getProfileData(id) {
+		this.props.getProfile(id);
+		this.props.getStatus(id);
+	}
+
 	componentDidMount() {
 		const { authId } = this.props;
 		const userId = this.props.match.params.userId;
 		const id = userId || authId;
-
-		this.props.getProfile(id);
-		this.props.getStatus(id);
+		this.getProfileData(id);
 	}
 
 	componentDidUpdate() {
@@ -28,13 +31,13 @@ class Container extends React.Component {
 		if (profile) {
 			const profileId = profile.userId;
 			if (!userId && authId !== profileId) {
-				this.props.getProfile(authId);
-				this.props.getStatus(authId);
+				this.getProfileData(authId);
 			}
 		}
 	}
 
 	render() {
+		const authId = this.props.authId;
 		return (
 			<div>
 				<Profile 
@@ -42,10 +45,12 @@ class Container extends React.Component {
 					status={this.props.status}
 					changeStatus={this.props.changeStatus}
 				/>
-				<MyPosts
-					posts={this.props.posts}
-					addPost={this.props.addPost}
-				/>
+				{this.props.profile && authId === this.props.profile.userId && 
+					<MyPosts
+						posts={this.props.posts}
+						addPost={this.props.addPost}
+					/>}
+				
 			</div>
 		);
 	}
