@@ -18,34 +18,6 @@ import styles from "assets/jss/material-dashboard-react/cardImagesStyles.js";
 
 const useStyles = makeStyles(styles);
 
-const testData = {
-  "items": [
-  {
-    "name": "Shubert",
-    "id": 1,
-    "photos": {
-      "small": null,
-      "large": null
-    },
-    "status": null,
-    "followed": false
-  },
-  {
-    "name": "Hacker",
-    "id": 2,
-    "photos": {
-      "small": null,
-      "large": null
-    },
-    "status": null,
-    "followed": false
-  }
-  ],
-  "totalCount": 30,
-  "error": null
-}
-
-
 const Users = (props) => {
 	const { users, totalUsers, getUsers } = props;
 
