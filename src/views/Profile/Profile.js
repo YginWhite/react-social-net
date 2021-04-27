@@ -27,19 +27,6 @@ import Preloader from '../../custom/Preloader/Preloader';
 import Status from './Status';
 
 
-
-
-const defaultInfo = {
-  aboutMe: `Don't be scared of the truth because we need to restart the
-            human foundation in truth And I love you like Kanye loves Kanye
-            I love Rick Owens’ bed design but the back is...`,
-  lookingForAJobDescription: `I am looking for a job that will reveal in me the potential 
-                              to make great achievements`,
-  status: 'There are many sayings in space ... ',
-  photo: avatar
-}
-
-
 const socialContacts = {
 	facebook: { icon: FacebookIcon, src: `https://facebook.com` },
 	github: { icon: GitHubIcon, src: `https://github.com` },
@@ -76,19 +63,20 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-const Contacts = () => {
+const Contacts = ({ contacts }) => {
 	const classes = useStyles();
 	return (
 		<div className={classes.contactsContainer}>
-			{Object.entries(socialContacts).map(([name, info]) => {
+			{Object.entries(contacts).map(([name, src]) => {
+        const contact = socialContacts[name];
 				return (
 					<Button justIcon round key={name}
 						color="white" 
-						href={info.src} 
+						href={src || contact.src} 
 						target="blank"
 						className={classes.contact}
 					>
-						<info.icon/>
+						<contact.icon/>
 					</Button>
 				);
 			})}
@@ -115,7 +103,6 @@ export default function Profile(props) {
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
-              {/*<h6 className={classes.textCenter}>{status || 'No status'}</h6>*/}
               <Status 
                 status={status}
                 styles={classes.textCenter}
@@ -136,7 +123,7 @@ export default function Profile(props) {
               </p>
 
               <CardFooter chart>
-              	<Contacts/>
+              	<Contacts contacts={profile.contacts}/>
               </CardFooter>
             </CardBody>
           </Card>
