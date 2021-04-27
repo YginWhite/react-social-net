@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { getUsers } from '../../redux/usersReducer';
+import { getUsers, follow, unfollow } from '../../redux/usersReducer';
 
 import Users from './Users';
 
@@ -17,6 +17,8 @@ class Container extends React.Component {
 					users={this.props.users}
 					totalUsers={this.props.totalUsers}
 					getUsers={this.props.getUsers}
+					follow={this.props.follow}
+					unfollow={this.props.unfollow}
 				/>
 			</div>
 		);
@@ -29,5 +31,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(
-	connect(mapStateToProps, { getUsers })
+	connect(mapStateToProps, { getUsers, follow, unfollow })
 )(Container);

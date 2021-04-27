@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -18,12 +18,24 @@ import styles from "assets/jss/material-dashboard-react/cardImagesStyles.js";
 
 const useStyles = makeStyles(styles);
 
+const reducer = (state, action) => {
+	switch (action.type) {
+		case 'add':
+			return [ ...state, action.userId ];
+		case 'remove':
+			return state.filter((id) => action.userId !== id);
+		default:
+			return state;
+	}
+};
+
 const Users = (props) => {
-	const { users, totalUsers, getUsers } = props;
+	const { users, totalUsers, getUsers, follow, unfollow } = props;
 
 	const [currentPage, setCurrentPage] = useState(58);
 	const [usersCount, setUsersCount] = useState(3);
 	const [usersLoading, setUsersLoading] = useState(false);
+	const [followingInProgress, dispatch] = useReducer(reducer, []);
 
 	useEffect(() => {
 		const fetchUsers = async () => {
@@ -45,6 +57,14 @@ const Users = (props) => {
 		if (currentPage === 1) return;
 		setCurrentPage(currentPage - 1); 
 	}
+	const handleClick = async (user) => {
+		const { id, followed } = user;
+		const callback = followed ? unfollow : follow;
+		dispatch({ type: 'add', userId: id });
+		await callback(id);
+		dispatch({ type: 'remove', userId: id });
+	};
+	const isDisabled = (userId) => followingInProgress.includes(userId);
 
 	const classes = useStyles();
 
@@ -78,7 +98,13 @@ const Users = (props) => {
 				      <CardBody>
 				        <h4>{user.name}</h4>
 				        <p>{user.status}</p>
-				        <Button color="primary">Follow</Button>
+				        <Button 
+				        	color="primary"
+				        	onClick={() => handleClick(user)}
+				        	disabled={isDisabled(user.id)}
+				        >
+				        	{user.followed ? 'Unfollow' : 'Follow'}
+				        </Button>
 				      </CardBody>
 						</Card>
 					</GridItem>

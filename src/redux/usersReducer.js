@@ -46,7 +46,7 @@ export default function usersReducer(state = initialState, action) {
 		default:
 			return state;
 	}
-}
+};
 
 export const getUsers = (page, count) => (dispatch) => {
 	return usersAPI.getUsers(page, count)
@@ -58,7 +58,7 @@ export const getUsers = (page, count) => (dispatch) => {
 
 export const follow = (userId) => {
 	return (dispatch) => {
-		usersAPI.followUser(userId).then(data => {
+		return usersAPI.followUser(userId).then(data => {
 			if (data.resultCode === 0) {
 				dispatch(followSuccess(userId));
 			}
@@ -68,7 +68,7 @@ export const follow = (userId) => {
 
 export const unfollow = (userId) => {
 	return (dispatch) => {
-  	usersAPI.unfollowUser(userId).then(data => {
+  	return usersAPI.unfollowUser(userId).then(data => {
   		if (data.resultCode === 0) {
   			dispatch(unfollowSuccess(userId));
   		}
