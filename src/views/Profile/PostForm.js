@@ -24,7 +24,13 @@ const PostForm = (props) => {
 
 	return (
 		<Form
-			onSubmit={values => addPost(values.newPost)}
+			onSubmit={(values, form) => {
+				addPost(values.newPost);
+				Object.keys(values).forEach(key => {
+				  form.change(key, undefined);
+				  form.resetFieldState(key);
+				});
+			}}
 			validate={postValidator}
 			render={(props) => (
 				<form onSubmit={props.handleSubmit}>
