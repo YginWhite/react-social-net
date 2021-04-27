@@ -24,7 +24,7 @@ const switchRoutes = (
     {routes.map((prop, key) => {
       return (
         <Route
-          path={prop.layout + prop.path}
+          path={prop.layout + prop.path + prop.subPath}
           component={prop.component}
           key={key}
         />

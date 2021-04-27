@@ -14,9 +14,24 @@ import MyPosts from './MyPosts';
 class Container extends React.Component {
 	componentDidMount() {
 		const { authId } = this.props;
+		const userId = this.props.match.params.userId;
+		const id = userId || authId;
 
-		this.props.getProfile(authId);
-		this.props.getStatus(authId);
+		this.props.getProfile(id);
+		this.props.getStatus(id);
+	}
+
+	componentDidUpdate() {
+		const { authId, profile } = this.props;
+		const userId = this.props.match.params.userId;
+		
+		if (profile) {
+			const profileId = profile.userId;
+			if (!userId && authId !== profileId) {
+				this.props.getProfile(authId);
+				this.props.getStatus(authId);
+			}
+		}
 	}
 
 	render() {

@@ -44,7 +44,8 @@ const dashboardRoutes = [
     name: "Profile",
     icon: Person,
     component: ProfileContainer,
-    layout: ""
+    layout: "",
+    subPath: "/:userId?"
   },
 
   {
@@ -52,7 +53,8 @@ const dashboardRoutes = [
     name: "Users",
     icon: Person,
     component: UsersContainer,
-    layout: ""
+    layout: "",
+    subPath: ""
   },
 
   {
@@ -60,17 +62,18 @@ const dashboardRoutes = [
     name: "Login",
     icon: Person,
     component: LoginContainer,
-    layout: ""
+    layout: "",
+    subPath: ""
   },
 
 
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: Dashboard,
-    component: DashboardPage,
-    layout: ""
-  },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   icon: Dashboard,
+  //   component: DashboardPage,
+  //   layout: ""
+  // },
   // {
   //   path: "/user",
   //   name: "User Profile",
@@ -78,27 +81,27 @@ const dashboardRoutes = [
   //   component: UserProfile,
   //   layout: ""
   // },
-  {
-    path: "/table",
-    name: "Table List",
-    icon: "content_paste",
-    component: TableList,
-    layout: ""
-  },
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: LibraryBooks,
-    component: Typography,
-    layout: ""
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: Notifications,
-    component: NotificationsPage,
-    layout: ""
-  }
+  // {
+  //   path: "/table",
+  //   name: "Table List",
+  //   icon: "content_paste",
+  //   component: TableList,
+  //   layout: ""
+  // },
+  // {
+  //   path: "/typography",
+  //   name: "Typography",
+  //   icon: LibraryBooks,
+  //   component: Typography,
+  //   layout: ""
+  // },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: Notifications,
+  //   component: NotificationsPage,
+  //   layout: ""
+  // }
 ];
 
 export default dashboardRoutes;

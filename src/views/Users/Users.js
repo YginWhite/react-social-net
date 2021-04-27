@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from "react";
+import { NavLink } from 'react-router-dom';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -32,7 +33,7 @@ const reducer = (state, action) => {
 const Users = (props) => {
 	const { users, totalUsers, getUsers, follow, unfollow } = props;
 
-	const [currentPage, setCurrentPage] = useState(58);
+	const [currentPage, setCurrentPage] = useState(77);
 	const [usersCount, setUsersCount] = useState(3);
 	const [usersLoading, setUsersLoading] = useState(false);
 	const [followingInProgress, dispatch] = useReducer(reducer, []);
@@ -89,12 +90,14 @@ const Users = (props) => {
 				{!usersLoading && users.map(user => (
 					<GridItem xs={12} sm={12} md={4} key={user.id}>
 						<Card>
-				      <img
-				        className={classes.cardImgTop}
-				        alt={user.name}
-				        style={{ width: "100%", display: "block" }}
-				        src={user.photos.large ? user.photos.large : avatar}
-				      />
+							<NavLink to={`/profile/${user.id}`}>
+								<img
+								  className={classes.cardImgTop}
+								  alt={user.name}
+								  style={{ width: "100%", display: "block" }}
+								  src={user.photos.large ? user.photos.large : avatar}
+								/>
+							</NavLink>
 				      <CardBody>
 				        <h4>{user.name}</h4>
 				        <p>{user.status}</p>
