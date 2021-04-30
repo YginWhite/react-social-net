@@ -29,18 +29,11 @@ import "assets/css/material-dashboard-react.css?v=1.9.0";
 
 const hist = createBrowserHistory();
 
-function render() {
-	ReactDOM.render(
-		<Provider store={store}>
-		  <Router history={hist}>
-		  	<App/>
-		  </Router>
-		</Provider>,
-	  document.getElementById("root")
-	);
-}
-
-render();
-store.subscribe(render);
-
-
+ReactDOM.render(
+	<Provider store={store}>
+	  <Router history={hist}>
+	  	<App/>
+	  </Router>
+	</Provider>,
+  document.getElementById("root")
+);
