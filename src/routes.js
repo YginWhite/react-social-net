@@ -16,26 +16,12 @@
 
 */
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
-import LibraryBooks from "@material-ui/icons/LibraryBooks";
-import Notifications from "@material-ui/icons/Notifications";
 
 // core components/views for Admin layout
-import DashboardPage from "views/Dashboard/Dashboard.js";
-import UserProfile from "views/UserProfile/UserProfile.js";
-import TableList from "views/TableList/TableList.js";
-import Typography from "views/Typography/Typography.js";
-import NotificationsPage from "views/Notifications/Notifications.js";
-
 import ProfileContainer from 'views/Profile/Container';
 import LoginContainer from './views/Login/Container';
 import UsersContainer from './views/Users/Container';
-
-//import Users from './views/Users/Users';
-
-
-
 
 
 const dashboardRoutes = [
@@ -64,44 +50,7 @@ const dashboardRoutes = [
     component: LoginContainer,
     layout: "",
     subPath: ""
-  },
-
-
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   icon: Dashboard,
-  //   component: DashboardPage,
-  //   layout: ""
-  // },
-  // {
-  //   path: "/user",
-  //   name: "User Profile",
-  //   icon: Person,
-  //   component: UserProfile,
-  //   layout: ""
-  // },
-  // {
-  //   path: "/table",
-  //   name: "Table List",
-  //   icon: "content_paste",
-  //   component: TableList,
-  //   layout: ""
-  // },
-  // {
-  //   path: "/typography",
-  //   name: "Typography",
-  //   icon: LibraryBooks,
-  //   component: Typography,
-  //   layout: ""
-  // },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: Notifications,
-  //   component: NotificationsPage,
-  //   layout: ""
-  // }
+  }
 ];
 
 export default dashboardRoutes;
