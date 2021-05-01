@@ -4,37 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import Tooltip from "@material-ui/core/Tooltip";
-
-import FacebookIcon from "@material-ui/icons/Facebook";
-import GitHubIcon from '@material-ui/icons/GitHub';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkIcon from '@material-ui/icons/Link';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import WebIcon from '@material-ui/icons/Web';
 
 import avatar from "assets/img/faces/marc.jpg";
 
 import Preloader from '../../custom/Preloader/Preloader';
 import Status from './Status';
-
-
-const socialContacts = {
-	facebook: { icon: FacebookIcon, src: `https://facebook.com` },
-	github: { icon: GitHubIcon, src: `https://github.com` },
-	instagram: { icon: InstagramIcon, src: `https://instagram.com` },
-	mainLink: { icon: LinkIcon, src: `https://google.com` },
-	twitter: { icon: TwitterIcon, src: `https://twitter.com` }, 
-	vk: { icon: WebIcon, src: `https://vk.com` }, 
-	website: { icon: WebIcon, src: `https://google.com` }, 
-	youtube: { icon: YouTubeIcon, src: `https://youtube.com` }
-};
+import Contacts from './Contacts';
 
 
 const styles = {
@@ -45,53 +24,11 @@ const styles = {
   	color: 'gray',
   	display: 'inline-block',
   	marginRight: '5px'
-  },
-  contactsContainer: {
-  	width: '100%',
-  	display: 'flex',
-  	justifyContent: 'space-between'
-  },
-  contact: {
-  	color: 'gray',
-  	backgroundColor: '#f2f3f4',
-  	marginRight: '5px'
   }
 };
 
 
 const useStyles = makeStyles(styles);
-
-
-const Contacts = ({ contacts }) => {
-  const classes = useStyles();
-  return (
-    <div className={classes.contactsContainer}>
-      {Object.entries(contacts).map(([name, src]) => {
-        const contact = socialContacts[name];
-        const Contact = React.forwardRef(function Contact(props, ref) {
-          return (
-            <div {...props} ref={ref}>
-              <Button justIcon round key={name}
-                color="white" 
-                href={src || contact.src} 
-                target="blank"
-                className={classes.contact}
-              >
-                <contact.icon/>
-              </Button>
-            </div>
-          );
-        });
-
-        return (
-          <Tooltip title={name} arrow key={name}>
-            <Contact/>
-          </Tooltip>
-        );
-      })}
-    </div>
-  );
-};
 
 
 export default function Profile(props) {
@@ -103,7 +40,6 @@ export default function Profile(props) {
   return (
     <div>
       <GridContainer justify="center">
-      
         <GridItem xs={12} sm={12} md={9}>
           <Card >
             <CardAvatar profile>
@@ -138,7 +74,6 @@ export default function Profile(props) {
             </CardBody>
           </Card>
         </GridItem>
-
       </GridContainer>
     </div>
   );
