@@ -7,7 +7,6 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-import InputLabel from "@material-ui/core/InputLabel";
 import Button from "components/CustomButtons/Button.js";
 import CardHeader from "components/Card/CardHeader.js";
 
@@ -44,7 +43,7 @@ const PostForm = (props) => {
 			          render={({ input, meta }) => (
 			            <div>
 			              <CustomInput
-			                labelText={meta.touched && meta.error || "input post text"}
+			                labelText={(meta.touched && meta.error) || "input post text"}
 			                id="newPost"
 			                name="newPost"
 			                formControlProps={{

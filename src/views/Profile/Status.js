@@ -47,7 +47,7 @@ export default function Status (props) {
 		        value: statusText,
 		        onChange: (e) => setStatusText(e.target.value),
 		        onKeyDown: (e) => {
-		        	if (e.keyCode == 13) {
+		        	if (e.keyCode === 13) {
 		        		onStatusChanged();
 		        	}
 		        },
