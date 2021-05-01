@@ -1,7 +1,7 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import profileReducer from './profileReducer';
+import profile from './profileReducer';
 import dialogsReducer from './dialogsReducer';
 import usersReducer from './usersReducer';
 import authReducer from './authReducer';
@@ -9,7 +9,7 @@ import appReducer from './appReducer';
 
 
 let reducers = combineReducers({
-	profilePage: profileReducer,
+	profile: profile,
 	dialogsPage: dialogsReducer,
 	usersPage: usersReducer,
 	auth: authReducer,

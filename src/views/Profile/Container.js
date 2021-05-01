@@ -58,11 +58,11 @@ class Container extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		profile: state.profilePage.profile,
-		status: state.profilePage.status,
+		profile: state.profile.profile,
+		status: state.profile.status,
 		authId: state.auth.userId,
 		isAuth: state.auth.isAuth,
-		posts: state.profilePage.posts
+		posts: state.profile.posts
 	};
 };
 
