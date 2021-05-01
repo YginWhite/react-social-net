@@ -4,11 +4,12 @@ import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 
 import { getProfile, getStatus, changeStatus, addPost } from '../../redux/profileReducer';
-import withAuthRedirect from '../../custom/withAuthRedirect';
+import { selectProfile, selectStatus, selectPosts } from '../../redux/profileReducer';
 
+
+import withAuthRedirect from '../../custom/withAuthRedirect';
 import Profile from './Profile';
 import MyPosts from './MyPosts';
-
 
 
 class Container extends React.Component {
@@ -58,11 +59,11 @@ class Container extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		profile: state.profile.profile,
-		status: state.profile.status,
+		profile: selectProfile(state),
+		status: selectStatus(state),
+		posts: selectPosts(state),
 		authId: state.auth.userId,
-		isAuth: state.auth.isAuth,
-		posts: state.profile.posts
+		isAuth: state.auth.isAuth
 	};
 };
 

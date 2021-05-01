@@ -70,3 +70,8 @@ export const changeStatus = (status) => {
 		}
 	};
 };
+
+
+export const selectProfile = state => state.profile.profile;
+export const selectStatus = state => state.profile.status;
+export const selectPosts = state => state.profile.posts;
