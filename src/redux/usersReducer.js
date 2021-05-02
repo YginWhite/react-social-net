@@ -1,19 +1,31 @@
 import { usersAPI } from './../api/api';
 
-const SET_USERS = 'SET_USERS';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+
+const SET_USERS = 'users/SET_USERS';
+const SET_TOTAL_USERS_COUNT = 'users/SET_TOTAL_USERS_COUNT';
+const FOLLOW = 'users/FOLLOW';
+const UNFOLLOW = 'users/UNFOLLOW';
+
 
 const initialState = {
 	users: [],
 	totalCount: 0
 };
 
+
 const setUsers = (users) => ({ type: SET_USERS, users });
 const setTotalCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
 const followSuccess = (userId) => ({ type: FOLLOW, userId });
 const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
+
+
+const updateObjectsInArray = (data, newValues, comparisonProp, comparisonValue) => {
+	return data.map(o => {
+		if ( o[comparisonProp] === comparisonValue ) return { ...o, ...newValues };
+		return o;
+	});
+};
+
 
 export default function usersReducer(state = initialState, action) {
 	switch (action.type) {
@@ -24,54 +36,34 @@ export default function usersReducer(state = initialState, action) {
 		case FOLLOW:
 			return {
 				...state,
-				users: state.users.map(user => {
-					if (user.id === action.userId) {
-						return { ...user, followed: true };
-					} else {
-						return user;
-					}
-				})
+				users: updateObjectsInArray(state.users, {followed: true}, 'id', action.userId)
 			};
 		case UNFOLLOW:
 			return {
 				...state,
-				users: state.users.map(user => {
-					if (user.id === action.userId) {
-						return { ...user, followed: false };
-					} else {
-						return user;
-					}
-				})
+				users: updateObjectsInArray(state.users, {followed: false}, 'id', action.userId)
 			};
 		default:
 			return state;
 	}
 };
 
-export const getUsers = (page, count) => (dispatch) => {
-	return usersAPI.getUsers(page, count)
-		.then(data => {
-			dispatch( setUsers(data.items) );
-			dispatch( setTotalCount(data.totalCount) );
-		});
-};
 
-export const follow = (userId) => {
-	return (dispatch) => {
-		return usersAPI.followUser(userId).then(data => {
-			if (data.resultCode === 0) {
-				dispatch(followSuccess(userId));
-			}
-		});
+const userMethod = (userId, apiMethod, dispatchMethod) =>
+	async (dispatch) => {
+		const data = await apiMethod(userId);
+		if (data.resultCode === 0) {
+			dispatch(dispatchMethod(userId));
+		}
 	};
-};
 
-export const unfollow = (userId) => {
-	return (dispatch) => {
-  	return usersAPI.unfollowUser(userId).then(data => {
-  		if (data.resultCode === 0) {
-  			dispatch(unfollowSuccess(userId));
-  		}
-  	});
+export const getUsers = (page, count) => 
+	async (dispatch) => {
+		const data = await usersAPI.getUsers(page, count);
+		dispatch( setUsers(data.items) );
+		dispatch( setTotalCount(data.totalCount) );
 	};
-};
+
+export const follow = (userId) => userMethod(userId, usersAPI.followUser, followSuccess);
+
+export const unfollow = (userId) => userMethod(userId, usersAPI.unfollowUser, unfollowSuccess);

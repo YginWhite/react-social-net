@@ -26,8 +26,8 @@ class Container extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	users: state.usersPage.users,
-	totalUsers: state.usersPage.totalCount
+	users: state.users.users,
+	totalUsers: state.users.totalCount
 })
 
 export default compose(
