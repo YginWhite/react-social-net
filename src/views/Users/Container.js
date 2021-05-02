@@ -1,15 +1,12 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { getUsers, follow, unfollow } from '../../redux/usersReducer';
+import { getUsers, follow, unfollow, selectUsers, selectTotalUsersCount } from '../../redux/usersReducer';
 
 import Users from './Users';
 
-class Container extends React.Component {
-	componentDidMount() {
-		//console.log(this.props);
-	}
 
+class Container extends React.Component {
 	render() {
 		return (
 			<div>
@@ -25,10 +22,12 @@ class Container extends React.Component {
 	}
 }
 
+
 const mapStateToProps = (state) => ({
-	users: state.users.users,
-	totalUsers: state.users.totalCount
+	users: selectUsers(state),
+	totalUsers: selectTotalUsersCount(state)
 })
+
 
 export default compose(
 	connect(mapStateToProps, { getUsers, follow, unfollow })

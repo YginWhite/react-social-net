@@ -65,5 +65,8 @@ export const getUsers = (page, count) =>
 	};
 
 export const follow = (userId) => userMethod(userId, usersAPI.followUser, followSuccess);
-
 export const unfollow = (userId) => userMethod(userId, usersAPI.unfollowUser, unfollowSuccess);
+
+
+export const selectUsers = state => state.users.users;
+export const selectTotalUsersCount = state => state.users.totalCount;
