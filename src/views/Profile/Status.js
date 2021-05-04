@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // @material-ui/core components
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui/icons
 import CreateIcon from '@material-ui/icons/Create';
 //core components
@@ -22,12 +23,18 @@ export default function Status (props) {
 	}, [status]);
 
 	if (!editMode) return (
-		<h6 
-			className={styles}
-			onDoubleClick={() => setEditMode(true)}
+		<Tooltip
+			title="Double click to change status text"
+			placement="top"
+			arrow
 		>
-			{statusText || 'No status'}
-		</h6>
+			<h6 
+				className={styles}
+				onDoubleClick={() => setEditMode(true)}
+			>
+				{statusText || 'No status'}
+			</h6>
+		</Tooltip>
 	); 
 
 	return (
