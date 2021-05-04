@@ -7,20 +7,26 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const Pagination = ({ pageNumber, setPageNumber, totalItems, itemsCount }) => {
 	const totalPages = Math.ceil(totalItems / itemsCount);
 
-	const forward = () => {
-		if (pageNumber !== itemsCount) setPageNumber(pageNumber + 1);
-	};
-	const back = () => {
-		if (pageNumber !== 1) setPageNumber(pageNumber - 1);
-	}
+	const forward = () => setPageNumber(pageNumber + 1);
+	const back = () => setPageNumber(pageNumber - 1);
 
 	return (
 		<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-			<Button justIcon color="primary" onClick={back}>
+			<Button 
+				justIcon 
+				color="primary"
+				onClick={back}
+				disabled={pageNumber === 1}
+			>
 				<ArrowBackIosIcon />
 			</Button>
 			<Muted>{`${pageNumber} of ${totalPages}`}</Muted>
-			<Button justIcon color="primary" onClick={forward}>
+			<Button 
+				justIcon
+				color="primary"
+				onClick={forward}
+				disabled={pageNumber === itemsCount}
+			>
 				<ArrowForwardIosIcon />
 			</Button>
 		</div>
