@@ -15,13 +15,22 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import React, { Suspense } from 'react';
 // @material-ui/icons
 import Person from "@material-ui/icons/Person";
-
 // core components/views for Admin layout
-import ProfileContainer from 'views/Profile/Container';
-import LoginContainer from './views/Login/Container';
-import UsersContainer from './views/Users/Container';
+const ProfileContainer = React.lazy(() => import('views/Profile/Container'));
+const LoginContainer = React.lazy(() => import('./views/Login/Container'));
+const UsersContainer = React.lazy(() => import('./views/Users/Container'));
+
+
+const withSuspense = (Component) => {
+  return (props) => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Component {...props} />
+    </Suspense>
+  );
+};
 
 
 const dashboardRoutes = [
@@ -29,7 +38,7 @@ const dashboardRoutes = [
     path: "/profile",
     name: "Profile",
     icon: Person,
-    component: ProfileContainer,
+    component: withSuspense(ProfileContainer),
     layout: "",
     subPath: "/:userId?"
   },
@@ -38,7 +47,7 @@ const dashboardRoutes = [
     path: "/users",
     name: "Users",
     icon: Person,
-    component: UsersContainer,
+    component: withSuspense(UsersContainer),
     layout: "",
     subPath: ""
   },
@@ -47,7 +56,7 @@ const dashboardRoutes = [
     path: "/login",
     name: "Login",
     icon: Person,
-    component: LoginContainer,
+    component: withSuspense(LoginContainer),
     layout: "",
     subPath: ""
   }
