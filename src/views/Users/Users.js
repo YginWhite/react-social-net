@@ -11,7 +11,7 @@ import CardBody from "components/Card/CardBody.js";
 
 import Pagination from './Pagination';
 import Preloader from '../../custom/Preloader/Preloader';
-import avatar from "assets/img/faces/marc.jpg";
+import avatar from "assets/img/user.jpg";
 import styles from "assets/jss/material-dashboard-react/cardImagesStyles.js";
 
 const useStyles = makeStyles(styles);
