@@ -45,6 +45,7 @@ class Container extends React.Component {
 					profile={this.props.profile}
 					status={this.props.status}
 					changeStatus={this.props.changeStatus}
+					authId={this.props.authId}
 				/>
 				{this.props.profile && authId === this.props.profile.userId && 
 					<MyPosts

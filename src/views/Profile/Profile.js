@@ -32,10 +32,10 @@ const useStyles = makeStyles(styles);
 
 
 export default function Profile(props) {
-  const { profile, status, changeStatus } = props;
+  const { profile, status, changeStatus, authId } = props;
   const classes = useStyles();
 
-  if (!profile) return <Preloader/> 
+  if (!profile) return <Preloader/>
 
   return (
     <div>
@@ -49,12 +49,15 @@ export default function Profile(props) {
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
-              <Status 
-                status={status}
-                styles={classes.textCenter}
-                changeStatus={changeStatus}
-              />
 
+              {profile.userId === authId
+                ? <Status 
+                    status={status}
+                    styles={classes.textCenter}
+                    changeStatus={changeStatus}
+                  />
+                : <h6 className={classes.textCenter}>{status || 'No status'}</h6>}
+              
               <p>
                 <span className={classes.label}>About:</span>
                 <span>{profile.aboutMe || 'No information'}</span>
