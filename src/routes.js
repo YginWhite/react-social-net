@@ -18,6 +18,7 @@
 import React, { Suspense } from 'react';
 // @material-ui/icons
 import Person from "@material-ui/icons/Person";
+import PeopleIcon from '@material-ui/icons/People';
 // core components/views for Admin layout
 const ProfileContainer = React.lazy(() => import('views/Profile/Container'));
 const LoginContainer = React.lazy(() => import('./views/Login/Container'));
@@ -46,7 +47,7 @@ const dashboardRoutes = [
   {
     path: "/users",
     name: "Users",
-    icon: Person,
+    icon: PeopleIcon,
     component: withSuspense(UsersContainer),
     layout: "",
     subPath: ""
