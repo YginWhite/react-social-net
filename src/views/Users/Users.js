@@ -8,11 +8,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import Muted from "components/Typography/Muted.js";
 
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
+import Pagination from './Pagination';
 import Preloader from '../../custom/Preloader/Preloader';
 import avatar from "assets/img/faces/marc.jpg";
 import styles from "assets/jss/material-dashboard-react/cardImagesStyles.js";
@@ -29,6 +26,7 @@ const reducer = (state, action) => {
 			return state;
 	}
 };
+
 
 const Users = (props) => {
 	const { users, totalUsers, getUsers, follow, unfollow } = props;
@@ -48,16 +46,6 @@ const Users = (props) => {
 		fetchUsers();
 	}, [currentPage, usersCount]);
 
-	const pageCount = Math.ceil(totalUsers / usersCount);
-
-	const paginateForward = () => {
-		if (currentPage === pageCount) return;
-		setCurrentPage(currentPage + 1);
-	};
-	const paginateBack = () => {
-		if (currentPage === 1) return;
-		setCurrentPage(currentPage - 1); 
-	}
 	const handleClick = async (user) => {
 		const { id, followed } = user;
 		const callback = followed ? unfollow : follow;
@@ -65,6 +53,7 @@ const Users = (props) => {
 		await callback(id);
 		dispatch({ type: 'remove', userId: id });
 	};
+
 	const isDisabled = (userId) => followingInProgress.includes(userId);
 
 	const classes = useStyles();
@@ -73,15 +62,12 @@ const Users = (props) => {
 		<div>
 			<GridContainer justify="center">
 				<GridItem xs={12} sm={12} md={6}>
-					<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-						<Button justIcon color="primary" onClick={paginateBack}>
-							<ArrowBackIosIcon />
-						</Button>
-						<Muted>{`${currentPage} of ${pageCount}`}</Muted>
-						<Button justIcon color="primary" onClick={paginateForward}>
-							<ArrowForwardIosIcon />
-						</Button>
-					</div>
+					<Pagination
+						pageNumber={currentPage}
+						setPageNumber={setCurrentPage} 
+						totalItems={totalUsers}
+						itemsCount={usersCount}
+					/>
 				</GridItem>
 			</GridContainer>
 
