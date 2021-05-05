@@ -14,9 +14,9 @@ class App extends React.Component {
 	}
 
 	render() {
-		// if (!this.props.isInitialized) {
-		// 	return <div className="container"><Preloader /></div>;
-		// }
+		if (!this.props.isInitialized) {
+			return <div className="container"><Preloader /></div>;
+		}
 
 		return (
 			<Switch>
