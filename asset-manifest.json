@@ -1,0 +1,41 @@
+{
+  "files": {
+    "static/js/0.e8d8d0e2.chunk.js": "/react-social-net/static/js/0.e8d8d0e2.chunk.js",
+    "static/js/0.e8d8d0e2.chunk.js.map": "/react-social-net/static/js/0.e8d8d0e2.chunk.js.map",
+    "main.css": "/react-social-net/static/css/main.98a14cce.chunk.css",
+    "main.js": "/react-social-net/static/js/main.2778113d.chunk.js",
+    "main.js.map": "/react-social-net/static/js/main.2778113d.chunk.js.map",
+    "runtime-main.js": "/react-social-net/static/js/runtime-main.c4bae4ac.js",
+    "runtime-main.js.map": "/react-social-net/static/js/runtime-main.c4bae4ac.js.map",
+    "static/css/3.d0176e96.chunk.css": "/react-social-net/static/css/3.d0176e96.chunk.css",
+    "static/js/3.a6e0fd3b.chunk.js": "/react-social-net/static/js/3.a6e0fd3b.chunk.js",
+    "static/js/3.a6e0fd3b.chunk.js.map": "/react-social-net/static/js/3.a6e0fd3b.chunk.js.map",
+    "static/js/4.585af445.chunk.js": "/react-social-net/static/js/4.585af445.chunk.js",
+    "static/js/4.585af445.chunk.js.map": "/react-social-net/static/js/4.585af445.chunk.js.map",
+    "static/js/5.86665680.chunk.js": "/react-social-net/static/js/5.86665680.chunk.js",
+    "static/js/5.86665680.chunk.js.map": "/react-social-net/static/js/5.86665680.chunk.js.map",
+    "static/js/6.b038ddfd.chunk.js": "/react-social-net/static/js/6.b038ddfd.chunk.js",
+    "static/js/6.b038ddfd.chunk.js.map": "/react-social-net/static/js/6.b038ddfd.chunk.js.map",
+    "static/js/7.773c1ed0.chunk.js": "/react-social-net/static/js/7.773c1ed0.chunk.js",
+    "static/js/7.773c1ed0.chunk.js.map": "/react-social-net/static/js/7.773c1ed0.chunk.js.map",
+    "static/js/8.f052404d.chunk.js": "/react-social-net/static/js/8.f052404d.chunk.js",
+    "static/js/8.f052404d.chunk.js.map": "/react-social-net/static/js/8.f052404d.chunk.js.map",
+    "index.html": "/react-social-net/index.html",
+    "precache-manifest.2d299c6cb62cb255787cff81022f856c.js": "/react-social-net/precache-manifest.2d299c6cb62cb255787cff81022f856c.js",
+    "service-worker.js": "/react-social-net/service-worker.js",
+    "static/css/3.d0176e96.chunk.css.map": "/react-social-net/static/css/3.d0176e96.chunk.css.map",
+    "static/css/main.98a14cce.chunk.css.map": "/react-social-net/static/css/main.98a14cce.chunk.css.map",
+    "static/js/3.a6e0fd3b.chunk.js.LICENSE.txt": "/react-social-net/static/js/3.a6e0fd3b.chunk.js.LICENSE.txt",
+    "static/js/main.2778113d.chunk.js.LICENSE.txt": "/react-social-net/static/js/main.2778113d.chunk.js.LICENSE.txt",
+    "static/media/marc.jpg": "/react-social-net/static/media/marc.8880a65c.jpg",
+    "static/media/sidebar-2.jpg": "/react-social-net/static/media/sidebar-2.310509c9.jpg",
+    "static/media/user.jpg": "/react-social-net/static/media/user.764e0bc5.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c4bae4ac.js",
+    "static/css/3.d0176e96.chunk.css",
+    "static/js/3.a6e0fd3b.chunk.js",
+    "static/css/main.98a14cce.chunk.css",
+    "static/js/main.2778113d.chunk.js"
+  ]
+}
