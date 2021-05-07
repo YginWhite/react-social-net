@@ -20,7 +20,7 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 
-export default function Avatar({ profile, changePhoto }) {
+export default function Avatar({ profile, changePhoto, isOwner }) {
 	const [avatarLoading, setAvatarLoading] = useState(false);
 	const ref = React.createRef();
 	const classes = useStyles();
@@ -28,6 +28,7 @@ export default function Avatar({ profile, changePhoto }) {
 	const photo = profile.photos.large ? profile.photos.large : avatar;
 
 	const onAvatarClicked = () => {
+		if (!isOwner) return;
 		ref.current.firstChild.click();
 		setAvatarLoading(true);
 	};

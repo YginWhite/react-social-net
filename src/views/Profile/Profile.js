@@ -44,6 +44,7 @@ export default function Profile(props) {
               <Avatar 
                 profile={profile}
                 changePhoto={changePhoto}
+                isOwner={profile.userId === authId}
               />
             </CardAvatar>
             <CardBody profile>
