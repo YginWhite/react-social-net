@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Preloader from '../../custom/Preloader/Preloader';
 import avatar from "assets/img/user.jpg";
@@ -48,13 +49,19 @@ export default function Avatar({ profile, changePhoto, isOwner }) {
 			  ? <div className={classes.preloaderContainer}>
 			      <Preloader/>
 			    </div>
-			  : <a>
-			      <img 
-			        src={photo} 
-			        alt="..." 
-			        onDoubleClick={onAvatarClicked}
-			      />
-			    </a>}
+			  : <Tooltip
+			  		title="Double click to change photo"
+			  		placement="right"
+			  		arrow 
+			  	>
+				  	<a>
+				      <img 
+				        src={photo} 
+				        alt="..." 
+				        onDoubleClick={onAvatarClicked}
+				      />
+				    </a>
+				  </Tooltip>}
 
 			<div className={classes.hidden}>
 			  <CustomInput
