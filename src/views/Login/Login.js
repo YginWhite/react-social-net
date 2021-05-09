@@ -108,7 +108,7 @@ const LoginForm = (props) => {
 												render={({ input, meta }) => (
 													<FormControlLabel
 														className={classes.checkboxLabel}
-									          control={<CheckboxInput {...input} />}
+									          control={<CheckboxInput name="remember" {...input} />}
 									          label={<span className={classes.labelFontSize}>Remember Me</span>}
 										      />
 												)}
