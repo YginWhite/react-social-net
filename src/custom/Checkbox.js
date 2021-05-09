@@ -8,12 +8,12 @@ import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js
 
 const useStyles = makeStyles(styles);
 
-const CheckboxInp = (input) => {
+const CheckboxInp = ({ name, ...input }) => {
 	const classes = useStyles();
 	return (
 		<Checkbox
 			inputProps={{ ...input }}
-			name="remember"
+			name={name}
 		  checkedIcon={<Check className={classes.checkedIcon} />}
 		  icon={<Check className={classes.uncheckedIcon} />}
 		  classes={{
