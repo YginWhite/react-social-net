@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 
-import { getProfile, getStatus, changeStatus, addPost, changePhoto } from '../../redux/profileReducer';
-import { selectProfile, selectStatus, selectPosts } from '../../redux/profileReducer';
+import { getProfile, getStatus, changeStatus, addPost, changePhoto, updateProfileData} from '../../redux/profileReducer';
+import { selectProfile, selectStatus, selectPosts, selectErrors } from '../../redux/profileReducer';
 
 
 import withAuthRedirect from '../../custom/withAuthRedirect';
@@ -47,6 +47,8 @@ class Container extends React.Component {
 					changeStatus={this.props.changeStatus}
 					changePhoto={this.props.changePhoto}
 					authId={this.props.authId}
+					updateProfileData={this.props.updateProfileData}
+					serverErrors={this.props.serverErrors}
 				/>
 				{this.props.profile && authId === this.props.profile.userId && 
 					<MyPosts
@@ -64,13 +66,14 @@ const mapStateToProps = (state) => {
 		profile: selectProfile(state),
 		status: selectStatus(state),
 		posts: selectPosts(state),
+		serverErrors: selectErrors(state),
 		authId: state.auth.userId,
 		isAuth: state.auth.isAuth
 	};
 };
 
 export default compose(
-	connect(mapStateToProps, { getProfile, getStatus, changeStatus, addPost, changePhoto }),
+	connect(mapStateToProps, { getProfile, getStatus, changeStatus, addPost, changePhoto, updateProfileData }),
 	withRouter,
 	withAuthRedirect
 )(Container)
