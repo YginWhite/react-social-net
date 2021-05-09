@@ -5,6 +5,7 @@ const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
 const SET_STATUS = 'profile/SET-STATUS';
 const RESET_USER_PROFILE = 'profile/RESET_USER_PROFILE';
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
+const SET_SERVER_ERROR = 'profile/SET_SERVER_ERROR';
 
 const initialState = {
 	posts: [
@@ -15,7 +16,8 @@ const initialState = {
 		{id: '5', like: '10', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut sed explicabo similique! Consequuntur magnam, et nostrum id possimus hic quibusdam ipsum alias iusto, eos consequatur aut quasi suscipit eum porro.'}
 	],
 	profile: null,
-	status: ''
+	status: '',
+	serverErrors: null
 };
 
 const profile = (state = initialState, action) => {
@@ -35,6 +37,8 @@ const profile = (state = initialState, action) => {
 			return { ...state, profile: null };
 		case SAVE_PHOTO_SUCCESS:
 			return { ...state, profile: { ...state.profile, photos: action.photos } };
+		case SET_SERVER_ERROR:
+			return { ...state, serverErrors: action.errors };
 		default:
 			return {...state};
 
@@ -49,6 +53,7 @@ export const setStatus = (status) => ({type: SET_STATUS, status});
 export const resetUserProfile = () => ({type: RESET_USER_PROFILE});
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
+export const setServerErrors = (errors) => ({type: SET_SERVER_ERROR, errors});
 
 
 export const getProfile = (userId) => {
@@ -83,7 +88,23 @@ export const changePhoto = (file) =>
 		}
 	}; 
 
+export const updateProfileData = (profileData) =>
+	async (dispatch) => {
+		const data = await profileAPI.updateProfile(profileData);
+		if (data.resultCode === 0) {
+			dispatch(setServerErrors(null));
+
+			dispatch( resetUserProfile() );
+			const data = await profileAPI.getProfile(profileData.userId);
+			dispatch(setUserProfile(data));
+
+		} else {
+			dispatch(setServerErrors(data.messages));
+		}
+		return data.messages;
+	}
 
 export const selectProfile = state => state.profile.profile;
 export const selectStatus = state => state.profile.status;
 export const selectPosts = state => state.profile.posts;
+export const selectErrors = state => state.profile.serverErrors;
