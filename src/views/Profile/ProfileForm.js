@@ -7,6 +7,8 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
 import CheckboxInput from '../../custom/Checkbox';
+import InputTextField from '../../custom/InputTextField';
+
 
 const styles = {
 	lookingJob: {
@@ -38,33 +40,7 @@ const validate = values => {
 };
 
 
-const InputTextField = ({ name, label, textOptions }) => {
-	const fieldSuccess = (meta) => meta.touched && !meta.error;
-	const fieldError = (meta) => meta.touched && !!meta.error;
-	const fieldLabel = (meta) => meta.touched && meta.error || label;
-
-	return (
-		<Field
-			name={name}
-			render={({input, meta}) => (
-				<CustomInput
-				  labelText={fieldLabel(meta)}
-				  name={name}
-				  formControlProps={{
-				    fullWidth: true
-				  }}
-				  inputProps={{ ...input, ...textOptions }}
-				  success={fieldSuccess(meta)}
-				  error={fieldError(meta)}
-				/>
-			)}
-		/>
-	);
-};
-
-
-
-export default function ProfileForm({ profile, updateProfileData, serverErrors, toggleEditMode }) {
+export default function ProfileForm({ profile, updateProfileData, toggleEditMode }) {
 	const classes = useStyles();
 	const onSubmit = async values => {
 		let profileData = { ...values };
@@ -72,7 +48,6 @@ export default function ProfileForm({ profile, updateProfileData, serverErrors, 
 		const errorsMessage = await updateProfileData(profileData);
 		if (!errorsMessage.length) toggleEditMode();
 	};
-
 
 	return (
 		<Form
