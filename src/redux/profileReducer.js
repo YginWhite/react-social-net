@@ -93,11 +93,7 @@ export const updateProfileData = (profileData) =>
 		const data = await profileAPI.updateProfile(profileData);
 		if (data.resultCode === 0) {
 			dispatch(setServerErrors(null));
-
-			dispatch( resetUserProfile() );
-			const data = await profileAPI.getProfile(profileData.userId);
-			dispatch(setUserProfile(data));
-
+			getProfile(profileData.userId)(dispatch);
 		} else {
 			dispatch(setServerErrors(data.messages));
 		}
