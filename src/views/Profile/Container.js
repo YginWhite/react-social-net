@@ -9,7 +9,7 @@ import { selectProfile, selectStatus, selectPosts, selectErrors } from '../../re
 
 import withAuthRedirect from '../../custom/withAuthRedirect';
 import Profile from './Profile';
-import MyPosts from './MyPosts';
+import MyPosts from './MyPosts/MyPosts';
 
 
 class Container extends React.Component {

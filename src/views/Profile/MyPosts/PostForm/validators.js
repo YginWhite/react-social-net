@@ -1,4 +1,4 @@
-import { required, maxLength } from '../../utils/validators';
+import { required, maxLength } from '../../../../utils/validators';
 
 export const postValidator = ({ newPost }) => {
 	const requiredError = required(newPost);

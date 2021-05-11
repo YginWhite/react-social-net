@@ -10,26 +10,29 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import CardHeader from "components/Card/CardHeader.js";
 
+import InputTextField from '../../../../custom/InputTextField';
 import { postValidator } from './validators';
-
 import { styles } from './styles';
 
 
 const useStyles = makeStyles(styles);
 									
-const PostForm = (props) => {
-	const { addPost } = props;
+const PostForm = ({ addPost }) => {
 	const classes = useStyles();
+	const clearFields = (values, form) => {
+		Object.keys(values).forEach(key => {
+		  form.change(key, undefined);
+		  form.resetFieldState(key);
+		});
+	};
+	const onSubmit = (values, form) => {
+		addPost(values.newPost);
+		clearFields(values, form);
+	};
 
 	return (
 		<Form
-			onSubmit={(values, form) => {
-				addPost(values.newPost);
-				Object.keys(values).forEach(key => {
-				  form.change(key, undefined);
-				  form.resetFieldState(key);
-				});
-			}}
+			onSubmit={onSubmit}
 			validate={postValidator}
 			render={(props) => (
 				<form onSubmit={props.handleSubmit}>
@@ -38,28 +41,11 @@ const PostForm = (props) => {
               <h4 className={classes.cardTitle}>Create new Post</h4>
 					  </CardHeader>
 						<CardBody>
-							<Field
-			          name="newPost"
-			          render={({ input, meta }) => (
-			            <div>
-			              <CustomInput
-			                labelText={(meta.touched && meta.error) || "input post text"}
-			                id="newPost"
-			                name="newPost"
-			                formControlProps={{
-			                  fullWidth: true
-			                }}
-			                inputProps={{
-			                  multiline: true,
-			                  rows: 5,
-			                  ...input,
-			                }}
-			                success={meta.touched && !meta.error}
-			                error={meta.touched && !!meta.error}
-			              />
-			            </div>
-			          )}
-			        />
+							<InputTextField 
+								name="newPost"
+								label="input post text"
+								textOptions={{multiline: true, rows: 5}}
+							/>
 						</CardBody>
 						<CardFooter>
 							<Button 

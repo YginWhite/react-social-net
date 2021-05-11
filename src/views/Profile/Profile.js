@@ -14,31 +14,14 @@ import Snackbar from "components/Snackbar/Snackbar.js";
 import AddAlert from "@material-ui/icons/AddAlert";
 
 import Preloader from '../../custom/Preloader/Preloader';
-import Status from './Status';
-import Contacts from './Contacts';
-import Avatar from './Avatar';
-import ProfileForm from './ProfileForm';
+import Status from './Status/Status';
+import Contacts from './Contacts/Contacts';
+import Avatar from './Avatar/Avatar';
+import ProfileForm from './ProfileForm/ProfileForm';
+import { styles } from './styles';
 
-
-
-const styles = {
-  textCenter: {
-  	textAlign: 'center'
-  },
-  label: {
-  	color: 'gray',
-  	display: 'inline-block',
-  	marginRight: '5px'
-  },
-  settingsBnt: {
-    position: 'absolute',
-    top: '10px',
-    right: '15px'
-  }
-};
 
 const useStyles = makeStyles(styles);
-
 
 export default function Profile(props) {
   const { profile, status, changeStatus, authId, changePhoto, updateProfileData, serverErrors } = props;
@@ -77,7 +60,6 @@ export default function Profile(props) {
                 ? <ProfileForm 
                     profile={profile} 
                     updateProfileData={updateProfileData}
-                    serverErrors={serverErrors}
                     toggleEditMode={onEditModeChanged}
                   />
                 : <div>

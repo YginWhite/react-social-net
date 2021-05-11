@@ -2,24 +2,13 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import CustomInput from "components/CustomInput/CustomInput.js";
-import Preloader from '../../custom/Preloader/Preloader';
+import Preloader from '../../../custom/Preloader/Preloader';
+
 import avatar from "assets/img/user.jpg";
+import styles from './styles';
 
-
-const styles = {
-	preloaderContainer: {
-		width: '130px',
-		height: '130px',
-		display: 'flex',
-		alignItems: 'center'
-	},
-	hidden: {
-		display: 'none'
-	}
-};
 
 const useStyles = makeStyles(styles);
-
 
 export default function Avatar({ profile, changePhoto, isOwner }) {
 	const [avatarLoading, setAvatarLoading] = useState(false);

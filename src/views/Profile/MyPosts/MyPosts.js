@@ -9,27 +9,11 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-import PostForm from './PostForm';
+import PostForm from './PostForm/PostForm';
+import preparePostsData from './preparePostsData';
+
 import { styles } from './styles';
 
-const preparePostsData = (posts) => {
-	let tableHead = [];
-	let tableData = [];
-
-	if (posts.length) {
-		tableHead = Object.entries(posts[0]).map(([key, value]) => {
-			return `${key[0].toUpperCase()}${key.slice(1)}`;
-		});
-
-		tableData = posts.map(post => {
-			return Object.entries(post).map(([key, value]) => {
-				return value;
-			})
-		});
-	}
-
-	return { tableHead, tableData };
-};
 
 const useStyles = makeStyles(styles);
 													

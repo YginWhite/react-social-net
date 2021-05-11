@@ -6,27 +6,13 @@ import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
-import CheckboxInput from '../../custom/Checkbox';
-import InputTextField from '../../custom/InputTextField';
+import CheckboxInput from '../../../custom/Checkbox';
+import InputTextField from '../../../custom/InputTextField';
+import socials from './socials';
+import styles from './styles';
 
-
-const styles = {
-	lookingJob: {
-		height: '100%',
-		display: 'flex',
-		alignItems: 'flex-end',
-		'& > span': {
-			padding: '11px'
-		}
-	},
-	buttons: {
-		marginTop: '20px'
-	}
-};
 
 const useStyles = makeStyles(styles);
-
-const socials = ['github', 'vk', 'facebook', 'instagram', 'twitter', 'website', 'youtube', 'mainLink'];
 
 const validate = values => {
   const errors = {};
@@ -38,7 +24,6 @@ const validate = values => {
   }
   return errors;
 };
-
 
 export default function ProfileForm({ profile, updateProfileData, toggleEditMode }) {
 	const classes = useStyles();
