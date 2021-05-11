@@ -29,7 +29,9 @@ export default function Profile(props) {
   const [open, setOpen] = React.useState(true);
   const classes = useStyles();
 
+  const isOwner = profile && profile.userId === authId;
   const onEditModeChanged = () => setEditMode(!editMode);
+
 
   if (!profile) return <Preloader/>
 
@@ -42,13 +44,13 @@ export default function Profile(props) {
               <Avatar 
                 profile={profile}
                 changePhoto={changePhoto}
-                isOwner={profile.userId === authId}
+                isOwner={isOwner}
               />
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
 
-              {profile.userId === authId
+              {isOwner
                 ? <Status 
                     status={status}
                     styles={classes.textCenter}
@@ -82,27 +84,27 @@ export default function Profile(props) {
             
             </CardBody>
 
-            <div
-              className={classes.settingsBnt}
-              onClick={onEditModeChanged}
-            >
-              <SettingsIcon/>
-            </div>
-
-            {serverErrors && 
-              <Snackbar
-                place="tr"
-                color="danger"
-                icon={AddAlert}
-                message={serverErrors.join(', ')}
-                open={open}
-                closeNotification={() => setOpen(false)}
-                close
-              />}
-
+            {isOwner && 
+              <div
+                className={classes.settingsBnt}
+                onClick={onEditModeChanged}
+              >
+                <SettingsIcon/>
+              </div>}
           </Card>
         </GridItem>
       </GridContainer>
+
+      {serverErrors && 
+        <Snackbar
+          place="tr"
+          color="danger"
+          icon={AddAlert}
+          message={serverErrors.join(', ')}
+          open={open}
+          closeNotification={() => setOpen(false)}
+          close
+        />}
     </div>
   );
 }
