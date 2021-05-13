@@ -14,9 +14,11 @@ import Snackbar from "components/Snackbar/Snackbar.js";
 import AddAlert from "@material-ui/icons/AddAlert";
 
 import Preloader from '../../custom/Preloader/Preloader';
-import Status from './Status/Status';
+import Status from './Status/Container';
+
 import Contacts from './Contacts/Contacts';
-import Avatar from './Avatar/Avatar';
+import Avatar from './Avatar/Container';
+
 import ProfileForm from './ProfileForm/ProfileForm';
 import { styles } from './styles';
 
@@ -24,7 +26,7 @@ import { styles } from './styles';
 const useStyles = makeStyles(styles);
 
 export default function Profile(props) {
-  const { profile, status, changeStatus, authId, changePhoto, updateProfileData, serverErrors } = props;
+  const { profile, status, authId, updateProfileData, serverErrors } = props;
   const [editMode, setEditMode] = useState(false);
   const [open, setOpen] = React.useState(true);
   const classes = useStyles();
@@ -41,21 +43,13 @@ export default function Profile(props) {
         <GridItem xs={12} sm={12} md={9}>
           <Card>
             <CardAvatar profile>
-              <Avatar 
-                profile={profile}
-                changePhoto={changePhoto}
-                isOwner={isOwner}
-              />
+              <Avatar isEditable={isOwner}/>
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
 
               {isOwner
-                ? <Status 
-                    status={status}
-                    styles={classes.textCenter}
-                    changeStatus={changeStatus}
-                  />
+                ? <Status/>
                 : <h6 className={classes.textCenter}>{status || 'No status'}</h6>}
 
               {editMode
