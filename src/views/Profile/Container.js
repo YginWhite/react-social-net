@@ -38,7 +38,6 @@ class Container extends React.Component {
 	}
 
 	render() {
-		const authId = this.props.authId;
 		return (
 			<div>
 				<Profile 

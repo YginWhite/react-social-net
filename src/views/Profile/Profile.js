@@ -9,6 +9,7 @@ import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import SettingsIcon from '@material-ui/icons/Settings';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 import Preloader from '../../custom/Preloader/Preloader';
 import Status from './Status/Container';
@@ -23,15 +24,15 @@ import { styles } from './styles';
 
 const useStyles = makeStyles(styles);
 
-export default function Profile(props) {
-  const { profile, authId, serverErrors } = props;
+export default function Profile({ profile, authId, serverErrors }) {
   const [editMode, setEditMode] = useState(false);
-  const [open, setOpen] = React.useState(true);
+  const [showPosts, setShowPosts] = useState(false);
+  const isOwner = profile && profile.userId === authId;
+
   const classes = useStyles();
 
-  const isOwner = profile && profile.userId === authId;
   const onEditModeChanged = () => setEditMode(!editMode);
-
+  const onShowPostsChanged = () => setShowPosts(!showPosts);
 
   if (!profile) return <Preloader/>
 
@@ -70,18 +71,20 @@ export default function Profile(props) {
             
             </CardBody>
 
-            {isOwner && 
-              <div
-                className={classes.settingsBnt}
-                onClick={onEditModeChanged}
-              >
-                <SettingsIcon/>
+            {isOwner &&
+              <div className={classes.settings}>
+                <div onClick={onShowPostsChanged}>
+                  <DescriptionIcon/>
+                </div>
+                <div onClick={onEditModeChanged}>
+                  <SettingsIcon/>
+                </div>
               </div>}
           </Card>
         </GridItem>
       </GridContainer>
 
-      {isOwner && <MyPosts/>}
+      {isOwner && showPosts && <MyPosts/>}
 
       {serverErrors && <ErrorSnackbar message={serverErrors.join(', ')}/>}
     </div>

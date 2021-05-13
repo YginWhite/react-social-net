@@ -7,7 +7,7 @@ export const styles = {
     display: 'inline-block',
     marginRight: '5px'
   },
-  settingsBnt: {
+  settings: {
     position: 'absolute',
     top: '10px',
     right: '15px'
