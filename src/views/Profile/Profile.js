@@ -47,10 +47,8 @@ export default function Profile(props) {
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
-
-              {isOwner
-                ? <Status/>
-                : <h6 className={classes.textCenter}>{status || 'No status'}</h6>}
+              
+              <Status isEditable={isOwner}/>
 
               {editMode
                 ? <ProfileForm 

@@ -12,7 +12,7 @@ import { styles } from './styles';
 
 const useStyles = makeStyles(styles);
 
-export default function Status ({ status, changeStatus }) {
+export default function Status ({ status, changeStatus, isEditable }) {
 	const classes = useStyles();
 
 	const [statusText, setStatusText] = useState(status);
@@ -26,6 +26,9 @@ export default function Status ({ status, changeStatus }) {
 	useEffect(() => {
 		setStatusText(status);
 	}, [status]);
+
+
+	if (!isEditable) return <h6 className={classes.textCenter}>{status || 'No status'}</h6>
 
 	if (!editMode) return (
 		<Tooltip
