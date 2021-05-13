@@ -46,9 +46,6 @@ class Container extends React.Component {
 					authId={this.props.authId}
 					serverErrors={this.props.serverErrors}
 				/>
-				{this.props.profile && authId === this.props.profile.userId && 
-					<MyPosts/>}
-				
 			</div>
 		);
 	}

@@ -22,6 +22,10 @@ import Avatar from './Avatar/Container';
 import ProfileForm from './ProfileForm/Container';
 import { styles } from './styles';
 
+import MyPosts from './MyPosts/Container';
+
+
+
 
 const useStyles = makeStyles(styles);
 
@@ -82,6 +86,9 @@ export default function Profile(props) {
           </Card>
         </GridItem>
       </GridContainer>
+
+      {isOwner && <MyPosts/>}
+
 
       {serverErrors && 
         <Snackbar
