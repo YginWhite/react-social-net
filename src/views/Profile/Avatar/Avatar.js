@@ -20,14 +20,13 @@ export default function Avatar({ profile, changePhoto, isEditable }) {
 	const onAvatarClicked = () => {
 		if (!isEditable) return;
 		ref.current.firstChild.click();
-		setAvatarLoading(true);
 	};
+
 	const onAvatarChanged = async (e) => {
 		let file = e.target.files[0];
 		if (file) {
+			setAvatarLoading(true);
 		  await changePhoto(file);
-		  setAvatarLoading(false);
-		} else {
 		  setAvatarLoading(false);
 		}
 	};
