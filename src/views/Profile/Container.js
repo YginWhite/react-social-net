@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 
-import { getProfile, getStatus, addPost} from '../../redux/profileReducer';
-import { selectProfile, selectStatus, selectPosts, selectErrors } from '../../redux/profileReducer';
+import { getProfile, getStatus} from '../../redux/profileReducer';
+import { selectProfile, selectStatus, selectErrors } from '../../redux/profileReducer';
 
 
 import withAuthRedirect from '../../custom/withAuthRedirect';
 import Profile from './Profile';
-import MyPosts from './MyPosts/MyPosts';
+import MyPosts from './MyPosts/Container';
 
 
 class Container extends React.Component {
@@ -47,10 +47,7 @@ class Container extends React.Component {
 					serverErrors={this.props.serverErrors}
 				/>
 				{this.props.profile && authId === this.props.profile.userId && 
-					<MyPosts
-						posts={this.props.posts}
-						addPost={this.props.addPost}
-					/>}
+					<MyPosts/>}
 				
 			</div>
 		);
@@ -60,7 +57,6 @@ class Container extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		profile: selectProfile(state),
-		posts: selectPosts(state),
 		serverErrors: selectErrors(state),
 		authId: state.auth.userId,
 		isAuth: state.auth.isAuth
@@ -68,7 +64,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-	connect(mapStateToProps, { getProfile, getStatus, addPost }),
+	connect(mapStateToProps, { getProfile, getStatus }),
 	withRouter,
 	withAuthRedirect
 )(Container)
