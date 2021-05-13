@@ -19,14 +19,14 @@ import Status from './Status/Container';
 import Contacts from './Contacts/Contacts';
 import Avatar from './Avatar/Container';
 
-import ProfileForm from './ProfileForm/ProfileForm';
+import ProfileForm from './ProfileForm/Container';
 import { styles } from './styles';
 
 
 const useStyles = makeStyles(styles);
 
 export default function Profile(props) {
-  const { profile, status, authId, updateProfileData, serverErrors } = props;
+  const { profile, authId, serverErrors } = props;
   const [editMode, setEditMode] = useState(false);
   const [open, setOpen] = React.useState(true);
   const classes = useStyles();
@@ -47,15 +47,11 @@ export default function Profile(props) {
             </CardAvatar>
             <CardBody profile>
               <h4 className={classes.textCenter}>{profile.fullName}</h4>
-              
+
               <Status isEditable={isOwner}/>
 
               {editMode
-                ? <ProfileForm 
-                    profile={profile} 
-                    updateProfileData={updateProfileData}
-                    toggleEditMode={onEditModeChanged}
-                  />
+                ? <ProfileForm toggleEditMode={onEditModeChanged}/>
                 : <div>
                     <p>
                       <span className={classes.label}>About:</span>
