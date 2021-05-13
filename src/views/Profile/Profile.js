@@ -10,21 +10,15 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import Snackbar from "components/Snackbar/Snackbar.js";
-import AddAlert from "@material-ui/icons/AddAlert";
-
 import Preloader from '../../custom/Preloader/Preloader';
 import Status from './Status/Container';
-
 import Contacts from './Contacts/Contacts';
 import Avatar from './Avatar/Container';
-
 import ProfileForm from './ProfileForm/Container';
-import { styles } from './styles';
-
 import MyPosts from './MyPosts/Container';
+import ErrorSnackbar from '../../custom/ErrorSnackbar';
 
-
+import { styles } from './styles';
 
 
 const useStyles = makeStyles(styles);
@@ -89,17 +83,7 @@ export default function Profile(props) {
 
       {isOwner && <MyPosts/>}
 
-
-      {serverErrors && 
-        <Snackbar
-          place="tr"
-          color="danger"
-          icon={AddAlert}
-          message={serverErrors.join(', ')}
-          open={open}
-          closeNotification={() => setOpen(false)}
-          close
-        />}
+      {serverErrors && <ErrorSnackbar message={serverErrors.join(', ')}/>}
     </div>
   );
 }
