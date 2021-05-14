@@ -19,6 +19,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import CheckboxInput from '../../custom/Checkbox';
 import ErrorSnackbar from '../../custom/ErrorSnackbar';
+import InputTextField from '../../custom/InputTextField';
+
 
 import { styles } from './styles';
 import { loginValidator } from './validators';
@@ -28,16 +30,6 @@ const useStyles = makeStyles(styles);
 
 const LoginForm = (props) => {
 	const classes = useStyles();
-
-	const fieldLabel = (meta, defaultText) => {
-		return meta.touched && meta.error || defaultText;
-	};
-	const fieldSuccess = (meta) => {
-		return meta.touched && !meta.error;
-	};
-	const fieldError = (meta) => {
-		return meta.touched && !!meta.error;
-	};
 
 	const onSubmit = (values) => {
 		props.login(values.email, values.username, values.remember);
@@ -63,41 +55,11 @@ const LoginForm = (props) => {
 								<CardBody>
 									<GridContainer>
 										<GridItem xs={12} sm={12} md={12}>
-											<Field
-												name="username"
-												render={({ input, meta }) => (
-													<CustomInput
-													  labelText={fieldLabel(meta, 'Password')}
-													  id="username"
-													  name="username"
-													  formControlProps={{
-													    fullWidth: true
-													  }}
-													  inputProps={{ ...input }}
-													  success={fieldSuccess(meta)}
-													  error={fieldError(meta)}
-													/>
-												)}
-											/>
+											<InputTextField name="username" label="Password"/>
 										</GridItem>
 
 										<GridItem xs={12} sm={12} md={12}>
-											<Field
-												name="email"
-												render={({ input, meta }) => (
-													<CustomInput
-													  labelText={fieldLabel(meta, 'Email')}
-													  id="email"
-													  name="email"
-													  formControlProps={{
-													    fullWidth: true
-													  }}
-													  inputProps={{ ...input }}
-													  success={fieldSuccess(meta)}
-													  error={fieldError(meta)}
-													/>
-												)}
-											/>
+											<InputTextField name="email" label="Email"/>
 										</GridItem>
 
 										<GridItem xs={12} sm={12} md={12}>
@@ -117,7 +79,8 @@ const LoginForm = (props) => {
 									</GridContainer>
 								</CardBody>
 								<CardFooter>
-									<Button type="submit" disabled={rest.hasValidationErrors} color="primary">Login</Button>
+									<Button type="submit" 
+										disabled={rest.hasValidationErrors || submitting} color="primary">Login</Button>
 								</CardFooter>
 							</form>
 						)}
@@ -129,11 +92,12 @@ const LoginForm = (props) => {
 };
 
 const Login = (props) => {
+	console.log(props);
 	return (
 		<div>
 			<LoginForm {...props}/>
 
-			{!!props.serverError && <ErrorSnackbar message={props.serverError}/>}
+			{!!props.serverErrorTxt && <ErrorSnackbar message={props.serverErrorTxt}/>}
 			
 		</div>
 	);			
