@@ -2,14 +2,14 @@ import {authAPI} from './../api/api';
 import { stopSubmit } from 'redux-form';
 
 const SET_USER_DATA = 'SET-USER-DATA';
-const SET_SERVER_ERROR = 'SET_SERVER_ERROR';
+const SET_SERVER_ERROR =  'SET_SERVER_ERROR';
 
 const initialState = {
 	userId: null,
 	email: null,
 	login: null,
 	isAuth: false,
-	serverError: ''
+	serverError: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const authReducer = (state = initialState, action) => {
 		case SET_USER_DATA:
 			return { ...state, ...action.data };
 		case SET_SERVER_ERROR:
-			return { ...state, serverError: action.errorText };
+			return { ...state, serverError: action.serverError };
 		default:
 			return state;
 	}
@@ -25,9 +25,9 @@ const authReducer = (state = initialState, action) => {
 
 export default authReducer;
 
-export const setServerError = (errorText) => ({
+export const setServerError = (serverError) => ({
 	type: SET_SERVER_ERROR,
-	errorText
+	serverError
 });
 
 export const setUserAuthData = (userId, email, login, isAuth) => (
@@ -53,13 +53,12 @@ export const login = (email, password, rememberMe=false) => {
 	return (dispatch) => {
 		authAPI.login(email, password, rememberMe)
 			.then(data => {
-				//console.log(data, 'from login');
+				console.log(data, 'from login');
 				if (data.resultCode === 0) {
 					dispatch( getAuthUserData() );
-					dispatch( setServerError('') );
+					dispatch( setServerError(null) );
 				} else {
-					let message = data.messages[0] || 'Some error';
-					dispatch( setServerError(message) );
+					dispatch( setServerError(data) );
 				}
 			});
 	};
@@ -75,4 +74,18 @@ export const logout = () => {
 				}
 			});
 	};
+};
+
+
+export const selectServerErrorText = state => 
+	state.auth.serverError && state.auth.serverError.messages.join(', ');
+
+export const selectServerFieldErrors = state => {
+	const fieldsErrors = state.auth.serverError && state.auth.serverError.fieldsErrors;
+	if (fieldsErrors && fieldsErrors.length) {
+		return fieldsErrors.reduce((acc, current) => {
+			acc[current.field] = current.error;
+			return acc;
+		}, {});
+	}
 };
