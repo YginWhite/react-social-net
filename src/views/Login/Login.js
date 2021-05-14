@@ -17,10 +17,9 @@ import CardIcon from "components/Card/CardIcon.js";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-import Snackbar from "components/Snackbar/Snackbar.js";
-import AddAlert from "@material-ui/icons/AddAlert";
-
 import CheckboxInput from '../../custom/Checkbox';
+import ErrorSnackbar from '../../custom/ErrorSnackbar';
+
 import { styles } from './styles';
 import { loginValidator } from './validators';
 
@@ -130,24 +129,11 @@ const LoginForm = (props) => {
 };
 
 const Login = (props) => {
-	const { serverError } = props;
-	const [open, setOpen] = React.useState(true);
-	
 	return (
 		<div>
 			<LoginForm {...props}/>
 
-			{!!serverError && 
-				<Snackbar
-	        place="tr"
-	        color="danger"
-	        icon={AddAlert}
-	        message={serverError}
-	        open={open}
-	        closeNotification={() => setOpen(false)}
-	        close
-				/>
-			}
+			{!!props.serverError && <ErrorSnackbar message={props.serverError}/>}
 			
 		</div>
 	);			
